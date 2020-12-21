@@ -6,6 +6,13 @@ libInstalling <- c('rgdal','ggmap', 'XML','methods','sp', 'validate')
 
 is.installed <- function(paquete) is.element(paquete, installed.packages())
 
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("NOISeq")
+
+library("NOISeq")
+
 #Checking package installation. If not verify, install packages.
 
 for (packages in libInstalling){
