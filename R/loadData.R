@@ -4,7 +4,7 @@
 #' @return dataCounts
 
 loadData <- function(dataPath){
-  browser()
+
   dirsCounts <- list.dirs(path=dataPath, full.names=FALSE )
 
   for (nameSample in dirsCounts){
@@ -31,6 +31,6 @@ loadData <- function(dataPath){
       }
     }
   }
-  browser()
+
   return(dataCounts)
 }
