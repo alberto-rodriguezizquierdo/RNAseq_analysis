@@ -4,8 +4,15 @@
 #' @import dplyr
 
 noiseqApp <- function(root,dataPath){
+  browser()
 
-  dataSamples <- loadData(data)
+#  library(logging)
+
+#  logging::loginfo('####--------Starting app---------------####',logger = logs)
+
+  dataSamples <- loadData(dataPath)
+####---------------Processing data------------------####
+
 
 
 

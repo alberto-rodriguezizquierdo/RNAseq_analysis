@@ -4,6 +4,7 @@
 #' @return dataCounts
 
 loadData <- function(dataPath){
+  browser()
   dirsCounts <- list.dirs(path=dataPath, full.names=FALSE )
 
   for (nameSample in dirsCounts){
@@ -17,18 +18,19 @@ loadData <- function(dataPath){
       clean_df_csv <- na.omit(df_csv)
 
       names(clean_df_csv)[names(clean_df_csv)=='V1'] <- 'gene_id'
-      names(clean_df_csv)[names(clean_df_csv)=='V2'] <- nameSample
 
       if (exists("dataCounts")==FALSE){
 
         dataCounts <- clean_df_csv
+        names(dataCounts)[names(dataCounts)=='V2'] <- nameSample
 
       }else{
 
-        dataCounts <- cbind(dataCounts, clean_df_csv$nameSample)
-
+        dataCounts  <- cbind(dataCounts, V2 = clean_df_csv$V2)
+        names(dataCounts)[names(dataCounts)=='V2'] <- nameSample
       }
     }
   }
+  browser()
   return(dataCounts)
 }
