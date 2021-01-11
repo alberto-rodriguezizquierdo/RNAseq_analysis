@@ -2,18 +2,9 @@
 
 rm(list=ls())
 
-libInstalling <- c('dplyr','NOISeq')
+libInstalling <- c('dplyr','NOISeq', 'XML')
 
 is.installed <- function(paquete) is.element(paquete, installed.packages())
-
-#if (!requireNamespace("BiocManager", quietly = TRUE))
-#  install.packages("BiocManager")
-
-#BiocManager::install("NOISeq")
-
-#library("NOISeq")
-
-#Checking package installation. If not verify, install packages.
 
 for (packages in libInstalling){
   if (!is.installed(packages)){
@@ -25,18 +16,11 @@ for (packages in libInstalling){
 }
 
 
-#sapply(libInstalling, require, character.only = TRUE)
-
 #Setting Working directories
-
-dataPath                  <- 'C:/Users/Alberto/Documents/Beebliography/essay/'
-root                      <- "C:/Users/Alberto/Documents/BrewPi/brewpi-devdocs/RNAseq_analysis/"
+root                  <- "C:/Users/Alberto/Documents/BrewPi/brewpi-devdocs/RNAseq_analysis/"
 setwd(root)
-#myDirectoryData       <- paste0(root,data)
 rDirectory            <- 'R/'
 myDirectoryR          <- paste0(root,rDirectory)
-#logsDirectory         <- 'logs/'
-#myDirectoryLogs       <- paste0(root,logsDirectory)
 
 
 listFiles <- list.files(myDirectoryR, pattern = ".R")
@@ -45,5 +29,5 @@ for (rscripts in listFiles){
 }
 
 #noiseqApp(root)
-debug(noiseqApp(root, dataPath))
+debug(noiseqApp(root))
 #loadingScripts   <- source(myDirectoryR,)
