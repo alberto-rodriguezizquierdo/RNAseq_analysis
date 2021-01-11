@@ -3,17 +3,19 @@
 #' @param datapath
 #' @import dplyr
 
-noiseqApp <- function(root,dataPath){
+noiseqApp <- function(root){
   browser()
 
 #  library(logging)
 
 #  logging::loginfo('####--------Starting app---------------####',logger = logs)
 
-  dataSamples <- loadData(dataPath)
+  configFile <- getConfigFile(root)
+
+  dataCounts <- loadData(configFile)
 ####---------------Processing data------------------####
 
-
+  myFactors <- loadFactors(configFile)
 
 
 }
