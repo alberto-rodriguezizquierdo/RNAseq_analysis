@@ -27,4 +27,8 @@ noiseqApp <- function(root){
 
   browser()
 
+####------------Building data in NOISeq object------------####
+
+
+
 }
