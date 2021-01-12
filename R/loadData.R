@@ -3,15 +3,15 @@
 #' @import dplyr
 #' @return dataCounts
 
-loadData <- function(dataPath){
-
-  dirsCounts <- list.dirs(path=dataPath, full.names=FALSE )
+loadData <- function(configFile){
+  browser()
+  dirsCounts <- list.dirs(path=configFile$dataPath, full.names=FALSE )
 
   for (nameSample in dirsCounts){
 
     if (!nameSample==""){
 
-      mappingFile <- paste0(dataPath, nameSample, '/rescounts.csv')
+      mappingFile <- paste0(configFile$dataPath, nameSample, '/rescounts.csv')
 
       csv <- read.csv(mappingFile, sep=";", header=FALSE)
       df_csv <- data.frame(csv)

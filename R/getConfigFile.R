@@ -9,7 +9,7 @@
 #' @author Alberto Rodríguez Izquierdo
 
 getConfigFile <- function(root){
-  browser()
+
   #loginfo('Reading configFile...')
   configFile <- readConfigFile(root)
 
@@ -21,7 +21,7 @@ getConfigFile <- function(root){
 
   #------------------Validation nodes----------------------#
 
-  nodesValidation(configFile)
+  configFile <- nodesValidation(configFile)
 
 
   ######--------------Validation nodes content --------------######
@@ -31,22 +31,27 @@ getConfigFile <- function(root){
   #Validate generalParameters
 
 
-  #validateGeneralParameters <- validateCharacter(configFile$fileName)
+  validateDataPath    <- validateCharacter(configFile$dataPath)
 
-#  browser()
+  bFactors <- configFile[grepl("bFactor",names(configFile))]
 
-#  validateGeneralParameters <- configFile$fileParameters
+  for (factors in names(bFactors)){
 
-#  validationFileEncoding    <- validateNumber (validateGeneralParameters$fileEncoding)
+    validateTreatment <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$treatment)')))
 
-#  validationFileName        <- validateCharacter (validateGeneralParameters$fileName)
+    validateNameSamples1 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_1$name_samples)')))
 
-  ###---Final getConfigFile
+    validateNameSamples2 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_2$name_samples)')))
 
+    validateFactor1 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_1$factor_1)')))
 
-#  if (any(error == TRUE)){
-#    stop('Not possible to validate, please check configFile format')
-#  }
+    validateFactor2 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_2$factor_2)')))
+  }
+####-------------------Validate Output------------------------####
+
+  validateOutputPath  <- validateCharacter(configFile$output$outputName)
+
+  validateOutputPath  <- validateCharacter(configFile$output$outputDir)
 
   return (configFile)
 }
@@ -63,8 +68,6 @@ getConfigFile <- function(root){
 #' @author Alberto Rodríguez Izquierdo
 
 readConfigFile <- function(root){
-
-  browser()
 
   require(XML)
 
@@ -85,40 +88,65 @@ readConfigFile <- function(root){
   return (configFile)
 }
 
+
+
+#' @name nodesValidation
+#' @param configFile
+#'
+
+
 nodesValidation <- function(configFile){
 
   #Building list with principal and secondary nodes for validation
 
   principalNodes <- c('dataPath','output')
 
-  fileParameters <- c('fileEncoding', 'fileName')
-
-  dataNodes <- c('ons_label', 'name')
+  bFactors <- configFile[grepl("bFactor",names(configFile))]
 
   #Validation principal nodes
 
   generalParametersNodes <- validateConfigNodes (principalNodes, configFile)
 
-  #Validation secondary nodes
-  browser()
+  bFactorsNodes <- validateConfigNodes(bFactors,configFile)
 
-  bFactors <- configFile[grepl("bFactor",names(configFile))]
+  #Validation secondary nodes
+
   for (factors in names(bFactors)){
 
     factor <- eval(parse(text=paste0('configFile$',factors)))
-
-    #paste0('configFile$',factors,'$samples_1$name_samples')
+    ##-----------------------Define name of samples------------------------##
     nameFactor1 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$samples_1$name_samples'))),',')
     factor$samples_1$name_samples <- nameFactor1
 
     nameFactor2 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$samples_2$name_samples'))),',')
     factor$samples_2$name_samples <- nameFactor2
 
-    configFile_ext <- paste0('configFile$',factors,'$',factor)
-
+    ##----------------------------Splitting by ','-------------------------##
     eval(parse(text=paste0('configFile$',factors,'$samples_1$name_samples <- ',factor$samples_1$name_samples)))
 
     eval(parse(text=paste0('configFile$',factors,'$samples_2$name_samples <- ',factor$samples_2$name_samples)))
+
+    ##------------------------------Validate nodes--------------------------##
+
+    bFactorsTreatment <- eval(parse(text=paste0('configFile$',factors,'$treatment')))
+
+    bFactorsLevels1 <- eval(parse(text=paste0('configFile$',factors,'$samples_1$name_samples')))
+
+    bFactorsLevels2 <- eval(parse(text=paste0('configFile$',factors,'$samples_2$name_samples')))
+
+    bFactorsLevelsFact1 <- eval(parse(text=paste0('configFile$',factors,'$samples_1$factor_1')))
+
+    bFactorsLevelsFact2 <- eval(parse(text=paste0('configFile$',factors,'$samples_2$factor_2')))
+
+    eval(parse(text=paste0('validationNode', factors, 'treatment <- validateConfigNodes(bFactorsTreatment,configFile$', factors,'$treatment)')))
+
+    eval(parse(text=paste0('validationNode', factors, 'sampleName <- validateConfigNodes(bFactorsLevels1,configFile$', factors,'$samples_1$name_samples)')))
+
+    eval(parse(text=paste0('validationNode', factors, 'sampleName <- validateConfigNodes(bFactorsLevels2,configFile$', factors,'$samples_2$name_samples)')))
+
+    eval(parse(text=paste0('validationNode', factors, 'factor1 <- validateConfigNodes(bFactorsLevelsFact1,configFile$', factors,'$samples_1$factor_1)')))
+
+    eval(parse(text=paste0('validationNode', factors, 'factor2 <- validateConfigNodes(bFactorsLevelsFact2,configFile$', factors,'$samples_2$factor_2)')))
   }
 #  for ([bFactorsCount=='bFactor']){
 
@@ -126,11 +154,8 @@ nodesValidation <- function(configFile){
 
 #  }
 
-  fileParametersNodes <- validateConfigNodes(fileParameters, configFile$fileParameters)
-
-  dataNodes <- validateConfigNodes(dataNodes, configFile$data)
-
-  loginfo('Nodes validation success!')
+  return(configFile)
+  #loginfo('Nodes validation success!')
 }
 
 
@@ -149,14 +174,60 @@ nodesValidation <- function(configFile){
 
 validateConfigNodes <- function (nodes, configFile){
 
-  for (x in nodes){
-    if (!(x %in% names(configFile))){
+  if (!is.list(nodes)){
+    for (x in nodes){
+      if (!(x %in% names(configFile))){
+        if (!(x %in% configFile)){
 
-#      log_error <- paste0('Node ',x,' does not exist! Please review configFile.xml')
-#      logerror(log_error)
+#         log_error <- paste0('Node ',x,' does not exist! Please review configFile.xml')
+#         logerror(log_error)
+          print(paste0('Warning: Node ', nodes,' does not exist'))
+#         stop(log_error)
+        }
+      }
+    }
+  }else{
+    for (x in names(nodes)){
+      if (!(x %in% names(configFile))){
 
-      stop(log_error)
+        #       log_error <- paste0('Node ',x,' does not exist! Please review configFile.xml')
+        #       logerror(log_error)
+        print(paste0('Warning: Node ', nodes,' does not exist'))
+        #       stop(log_error)
+      }
     }
   }
 }
 
+
+
+
+#' App structure
+#' @name ValidateCharacter
+#' @param configFile
+#' @description App to start geoapp
+#'
+#' @import logging, XML
+#' @return configFile
+#'
+#' @author Alberto Rodríguez Izquierdo
+
+
+validateCharacter <- function(configFile,
+                              isNa = NULL){
+
+  if (is.null(configFile)){
+    log_error <- paste0('Value ', configFile, ' is null. Please check configFile')
+    logerror(log_error)
+
+  }else{
+    if (!is.null(isNa)){
+      configFile <- is.character(configFile)
+    }else{
+      is.na(configFile)
+    }
+  }
+
+  return(configFile)
+
+}

@@ -14,7 +14,7 @@ noiseqApp <- function(root){
 
   dataCounts <- loadData(configFile)
 ####---------------Processing data------------------####
-
+  browser()
   myFactors <- loadFactors(configFile)
 
 
