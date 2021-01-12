@@ -15,7 +15,16 @@ noiseqApp <- function(root){
   dataCounts <- loadData(configFile)
 ####---------------Processing data------------------####
   browser()
-  myFactors <- loadFactors(configFile)
 
+####---------------Building factors-----------------####
+
+  bFactors <- configFile[grepl("bFactor",names(configFile))]
+
+  for (factors in names(bFactors)){
+
+    eval(parse(text=paste0('myFactors',factors,' <- loadFactors(configFile$',factors,')')))
+
+  }
+  browser()
 
 }

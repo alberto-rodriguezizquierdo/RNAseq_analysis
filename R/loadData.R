@@ -4,7 +4,7 @@
 #' @return dataCounts
 
 loadData <- function(configFile){
-  browser()
+
   dirsCounts <- list.dirs(path=configFile$dataPath, full.names=FALSE )
 
   for (nameSample in dirsCounts){
