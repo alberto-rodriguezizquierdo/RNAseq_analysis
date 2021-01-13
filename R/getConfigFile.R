@@ -4,9 +4,9 @@
 #' @description App to start geoapp
 #'
 #' @import logging
-#' @return results
+#' @return configFile
 #'
-#' @author Alberto Rodríguez Izquierdo
+#' @author Alberto Rodriguez-Izquierdo, 2021
 
 getConfigFile <- function(root){
 
@@ -47,9 +47,12 @@ getConfigFile <- function(root){
 
     validateFactor2 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_2$factor_2)')))
   }
+
+
+
 ####-------------------Validate Output------------------------####
 
-  validateOutputPath  <- validateCharacter(configFile$output$outputName)
+  validateOutputName  <- validateCharacter(configFile$output$outputName)
 
   validateOutputPath  <- validateCharacter(configFile$output$outputDir)
 
@@ -65,7 +68,7 @@ getConfigFile <- function(root){
 #' @import logging, XML
 #' @return configFile
 #'
-#' @author Alberto Rodríguez Izquierdo
+#' @author Alberto Rodriguez-Izquierdo, 2021
 
 readConfigFile <- function(root){
 
@@ -92,22 +95,32 @@ readConfigFile <- function(root){
 
 #' @name nodesValidation
 #' @param configFile
+#' @return configFile
 #'
+#' @author Alberto Rodriguez-Izquierdo, 2021
 
 
 nodesValidation <- function(configFile){
 
   #Building list with principal and secondary nodes for validation
 
-  principalNodes <- c('dataPath','output')
+  principalNodes          <- c('dataPath','output')
 
-  bFactors <- configFile[grepl("bFactor",names(configFile))]
+  bFactors                <- configFile[grepl("bFactor",names(configFile))]
+
+  geneLengthNodes         <- c('geneLengthDir','geneLengthFilename','geneLengthAnnotation','geneLengthExtAnnot', 'geneLengthOutputFilename')
+
+  outputNodes             <- c('outputName','outputDir')
 
   #Validation principal nodes
 
-  generalParametersNodes <- validateConfigNodes (principalNodes, configFile)
+  generalParametersNodes  <- validateConfigNodes (principalNodes, configFile)
 
-  bFactorsNodes <- validateConfigNodes(bFactors,configFile)
+  bFactorsNodes           <- validateConfigNodes(bFactors,configFile)
+
+  ValgeneLengthNodes      <- validateConfigNodes(geneLengthNodes, configFile)
+
+  ValOutputNodes          <- validateConfigNodes(outputNodes, configFile)
 
   #Validation secondary nodes
 

@@ -4,7 +4,7 @@
 #' @import NOISeq
 #'
 #' @return myFactors
-#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
 
 
 loadFactors <- function(configFile){

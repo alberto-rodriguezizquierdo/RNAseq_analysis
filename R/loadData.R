@@ -1,7 +1,12 @@
 #' @name loadData
 #' @param dataPaht
+#'
+#'
 #' @import dplyr
+#'
 #' @return dataCounts
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
 
 loadData <- function(configFile){
 
@@ -33,4 +38,22 @@ loadData <- function(configFile){
   }
 
   return(dataCounts)
+}
+
+#' @name creatingCountsByFactors
+#' @param dataCounts
+#' @param factor
+#'
+#'
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
+
+creatingCountsByFactors <- function(dataCounts,factor){
+
+
+
+
+
+
 }

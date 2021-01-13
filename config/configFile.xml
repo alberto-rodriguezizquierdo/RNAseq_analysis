@@ -25,6 +25,14 @@
     </samples_2>
   </bFactor_2>
 
+  <geneLength>
+    <geneLengthDir></geneLengthDir>
+    <geneLengthFilename></geneLengthFilename>
+    <geneLengthAnnotation></geneLengthAnnotation>
+    <geneLengthExtAnnot>gtf</geneLengthExtAnnot>
+    <geneLengthOutputFilename></geneLengthOutputFilename>
+  </geneLength>
+
   <output>
     <outputName>resultsNoiseq.csv</outputName>
     <outputDir>output</outputDir>
