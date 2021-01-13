@@ -48,6 +48,10 @@
     <random.seed>12345</random.seed>
   </condAnalysisNOISeqbio>
 
+  <degenesParam>
+    <q>0.95</q>
+    <m></m>
+  </degenesParam>
 
 
   <output>

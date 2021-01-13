@@ -72,7 +72,7 @@ getConfigFile <- function(root){
     eval(parse(text=paste0('configFile$', factors,'$samples_2$factor_2 <- validateFactor2')))
     }
 
-  browser()
+
 ####-------------Validate condAnalysisNOISeqbio-------------------####
 
   validatenclust <- validateNumber(configFile$condAnalysisNOISeqbio$nclust)
@@ -108,7 +108,7 @@ getConfigFile <- function(root){
   validategeneLengthFilename <- validateCharacter(configFile$geneLength$geneLengthFilename)
 
   configFile$geneLength$geneLengthFilename <- validategeneLengthFilename
-  browser()
+
   validategeneLengthAnnotation <- validateCharacter(configFile$geneLength$geneLengthAnnotation)
 
   configFile$geneLength$geneLengtAnnotation <- validategeneLengthAnnotation
@@ -120,6 +120,16 @@ getConfigFile <- function(root){
   validategeneLengthOutputFilename <- validateCharacter(configFile$geneLength$geneLengtOutputFilename)
 
   configFile$geneLength$geneLengtOutputFilename <- validategeneLengthOutputFilename
+
+####-------------------Validate degenesParam------------------------####
+
+  validatedegenesParamq <- validateNumber(configFile$degenesParam$q)
+
+  configFile$degenesParam$q <- validatedegenesParamq
+
+  validatedegenesParamm <- validateNumber(configFile$degenesParam$m)
+
+  configFile$degenesParam$m <- validatedegenesParamm
 
 ####-------------------Validate Output------------------------####
 
@@ -189,14 +199,16 @@ nodesValidation <- function(configFile){
                                    'geneLengthExtAnnot',
                                    'geneLengthOutputFilename')
 
-  outputNodes                 <- c('outputName','outputDir')
-
   condAnalysisNOISeqbioNodes  <- c('nclust',
                                    'k',
                                    'norm',
                                    'filter',
                                    'r',
                                    'random.seed')
+
+  degenesParamNodes           <- c('q','m')
+
+  outputNodes                 <- c('outputName','outputDir')
 
   #Validation principal nodes
 
@@ -206,9 +218,11 @@ nodesValidation <- function(configFile){
 
   ValgeneLengthNodes            <- validateConfigNodes(geneLengthNodes, configFile$geneLength)
 
-  ValOutputNodes                <- validateConfigNodes(outputNodes, configFile$output)
-
   ValcondAnalysisNOISeqbioNodes <- validateConfigNodes(condAnalysisNOISeqbioNodes, configFile$condAnalysisNOISeqbio)
+
+  ValdegenesParamNodes          <- validateConfigNodes(degenesParamNodes, configFile$degenesParam)
+
+  ValOutputNodes                <- validateConfigNodes(outputNodes, configFile$output)
 
   #Validation secondary nodes
 
@@ -353,7 +367,7 @@ validateCharacter <- function(configFile,
 
 validateNumber <- function(configFile){
 
-  browser()
+
 
 #  Error <- FALSE
 

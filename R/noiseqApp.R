@@ -5,7 +5,7 @@
 #' @author Alberto Rodriguez-Izquierdo, 2021
 
 noiseqApp <- function(root){
-  browser()
+
 
 #  library(logging)
 
@@ -47,13 +47,15 @@ noiseqApp <- function(root){
 
     eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,',geneLength,myFactors',factors,')')))
 
-    eval(parse(text=paste0('mySpecimen1 <- configFile$',factors,'$specimen1)')))
+    eval(parse(text=paste0('mySpecimen1 <- configFile$',factors,'$specimen1')))
 
-    eval(parse(text=paste0('mySpecimen2 <- configFile$',factors,'$specimen2)')))
+    eval(parse(text=paste0('mySpecimen2 <- configFile$',factors,'$specimen2')))
 
-    eval(parse(text=paste0('myComparison <- configFile$',factors,'$comparison)')))
+    eval(parse(text=paste0('myComparison <- configFile$',factors,'$comparison')))
 
     eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,' <- ProcessingNOISeqbio(myData',factors,',factors,myFactors',factors,',configFile)')))
+
+    eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg <- calculateDEGenes(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',configFile)')))
 
 
 

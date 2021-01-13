@@ -76,8 +76,6 @@ creatingCountsByFactors <- function(dataCounts,factor){
 
 ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
 
-  browser()
-
   myData <- NOISeq::readData(data=myCounts, length = lengthGene, factors=myFactor)
 
   return(myData)

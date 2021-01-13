@@ -1,8 +1,9 @@
 
 #' @name ProcessingNOISeqbio
-#' @param myCounts
-#' @param myFactor
-#' @param lengthGene
+#' @param data
+#' @param factor_nb
+#' @param factor
+#' @param configFile
 #' @import NOISeq
 #' @import dplyr
 #'
@@ -36,4 +37,28 @@ ProcessingNOISeqbio <- function(data,factor_nb,factor, configFile){
 
   return(value_noiseqbio)
 
+}
+
+
+#' @name calculateDEGenes
+#' @param data
+#' @param configFile
+#'
+#' @import NOISeq
+#' @import dplyr
+#'
+#' @return value_degenes
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
+
+
+calculateDEGenes <- function(data,configFile){
+
+  q_val <- configFile$degenesParam$q
+  M_val <- configFile$degenesParam$m
+
+  data_degenes = degenes(data, q = q_val, M = M_val)
+
+  return(data_degenes)
 }
