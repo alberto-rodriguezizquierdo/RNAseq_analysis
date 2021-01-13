@@ -56,6 +56,6 @@
 
   <output>
     <outputName>resultsNoiseq.csv</outputName>
-    <outputDir>output</outputDir>
+    <outputDir>C:/Users/Alberto/Documents/Beebliography/results/</outputDir>
   </output>
 </generalParameters>

@@ -57,10 +57,12 @@ noiseqApp <- function(root){
 
     eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg <- calculateDEGenes(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',configFile)')))
 
+    outputPathName <- paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison)
 
-
+    eval(parse(text=paste0('outputResults(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg, outputPathName, configFile)')))
 
   }
+  print('App finished successfully!')
 }
 
 
