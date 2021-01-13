@@ -59,7 +59,7 @@ noiseqApp <- function(root){
 
     outputPathName <- paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison)
 
-    eval(parse(text=paste0('outputResults(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg, outputPathName, configFile)')))
+    eval(parse(text=paste0('outputResults(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg,',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,', outputPathName, configFile, graph=TRUE)')))
 
   }
   print('App finished successfully!')
