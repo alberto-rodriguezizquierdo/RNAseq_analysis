@@ -26,11 +26,11 @@
   </bFactor_2>
 
   <geneLength>
-    <geneLengthDir></geneLengthDir>
-    <geneLengthFilename></geneLengthFilename>
-    <geneLengthAnnotation></geneLengthAnnotation>
+    <geneLengthDir>C:/Users/Alberto/Documents/Beebliography/</geneLengthDir>
+    <geneLengthFilename>geneLength.csv</geneLengthFilename>
+    <geneLengthAnnotation>Vitis_vinifera_gene_annotation_on_V2_20_new.gtf</geneLengthAnnotation>
     <geneLengthExtAnnot>gtf</geneLengthExtAnnot>
-    <geneLengthOutputFilename></geneLengthOutputFilename>
+    <geneLengthOutputFilename>geneLength.csv</geneLengthOutputFilename>
   </geneLength>
 
   <output>

@@ -43,17 +43,42 @@ loadData <- function(configFile){
 #' @name creatingCountsByFactors
 #' @param dataCounts
 #' @param factor
+#' @import dplyr
 #'
-#'
+#' @return selDataCounts
 #'
 #' @author Alberto Rodriguez-Izquierdo, 2021
 #'
 
 creatingCountsByFactors <- function(dataCounts,factor){
 
+  SelDataCounts <- dplyr::select(dataCounts,factor$sample)
+
+#  SelDataCounts <- cbind(gene_id=dataCounts$gene_id, SelDataCounts)
+
+  return(SelDataCounts)
+}
+
+
+#' @name ReadNOISeqFactors
+#' @param myCounts
+#' @param myFactor
+#' @param lengthGene
+#' @import NOISeq
+#' @import dplyr
+#'
+#' @return myData
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
 
 
 
+ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
 
+  browser()
 
+  myData <- NOISeq::readData(data=myCounts, length = lengthGene, factors=myFactor)
+
+  return(myData)
 }

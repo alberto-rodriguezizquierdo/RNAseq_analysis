@@ -26,8 +26,6 @@ noiseqApp <- function(root){
   }
 ####----------------Read data with NOISeq App--------------####
 
-  browser()
-
 ##---------------Calculating gene length---------------------##
 
   if (!file.exists(paste0(configFile$geneLength$geneLengthDir,configFile$geneLength$geneLengthFilename))){
@@ -37,6 +35,8 @@ noiseqApp <- function(root){
                                       configFile$geneLength$geneLengthDir,
                                       configFile$geneLength$geneLengthOutputFilename)
 
+  }else{
+    geneLength <- read.csv(paste0(configFile$geneLength$geneLengthDir,configFile$geneLength$geneLengthFilename), sep= ';')
   }
 
 ####-------------Building data in NOISeq object------------####
@@ -44,8 +44,8 @@ noiseqApp <- function(root){
   for (factors in names(bFactors)){
 
     eval(parse(text=paste0('myCounts', factors,' <- creatingCountsByFactors(dataCounts,myFactors',factors,')')))
-
-    eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,',myFactors',factors,',)')))
+    browser()
+    eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,',geneLength,myFactors',factors,')')))
 
   }
 

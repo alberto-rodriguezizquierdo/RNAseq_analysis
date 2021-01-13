@@ -2,7 +2,7 @@
 
 rm(list=ls())
 
-libInstalling <- c('dplyr','NOISeq', 'XML')
+libInstalling <- c('dplyr','NOISeq', 'XML', 'GenomicFeatures', 'BiocManager', 'NOISeq', 'tidyverse')
 
 is.installed <- function(paquete) is.element(paquete, installed.packages())
 

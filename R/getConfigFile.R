@@ -118,9 +118,9 @@ nodesValidation <- function(configFile){
 
   bFactorsNodes           <- validateConfigNodes(bFactors,configFile)
 
-  ValgeneLengthNodes      <- validateConfigNodes(geneLengthNodes, configFile)
+  ValgeneLengthNodes      <- validateConfigNodes(geneLengthNodes, configFile$geneLength)
 
-  ValOutputNodes          <- validateConfigNodes(outputNodes, configFile)
+  ValOutputNodes          <- validateConfigNodes(outputNodes, configFile$output)
 
   #Validation secondary nodes
 
