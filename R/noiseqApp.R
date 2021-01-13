@@ -44,9 +44,22 @@ noiseqApp <- function(root){
   for (factors in names(bFactors)){
 
     eval(parse(text=paste0('myCounts', factors,' <- creatingCountsByFactors(dataCounts,myFactors',factors,')')))
-    browser()
+
     eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,',geneLength,myFactors',factors,')')))
 
-  }
+    eval(parse(text=paste0('mySpecimen1 <- configFile$',factors,'$specimen1)')))
 
+    eval(parse(text=paste0('mySpecimen2 <- configFile$',factors,'$specimen2)')))
+
+    eval(parse(text=paste0('myComparison <- configFile$',factors,'$comparison)')))
+
+    comparison_var <- paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison)
+
+
+
+
+  }
 }
+
+
+

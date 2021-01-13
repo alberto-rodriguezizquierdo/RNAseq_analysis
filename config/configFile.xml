@@ -2,6 +2,9 @@
 <generalParameters>
   <dataPath>C:/Users/Alberto/Documents/Beebliography/essay/</dataPath>
   <bFactor_1>
+    <specimen1>AS1B</specimen1>
+    <specimen2>AS1B</specimen2>
+    <comparison>control0D_vs_3gLOD</comparison>
     <treatment>NaCl</treatment>
     <samples_1>
       <name_samples>AS1B01,AS1B02,AS1B03</name_samples>
@@ -14,6 +17,9 @@
   </bFactor_1>
 
   <bFactor_2>
+    <specimen1>AS1B</specimen1>
+    <specimen2>AS1B</specimen2>
+    <comparison>3g0D_vs3g1D</comparison>
     <treatment>NaCl</treatment>
     <samples_1>
       <name_samples>AS1B13,AS1B14,AS1B15</name_samples>
@@ -32,6 +38,17 @@
     <geneLengthExtAnnot>gtf</geneLengthExtAnnot>
     <geneLengthOutputFilename>geneLength.csv</geneLengthOutputFilename>
   </geneLength>
+
+  <condAnalysisNOISeqbio>
+    <nclust>15</nclust>
+    <k></k>
+    <norm>tmm</norm>
+    <filter>1</filter>
+    <r>50</r>
+    <random.seed>12345</random.seed>
+  </condAnalysisNOISeqbio>
+
+
 
   <output>
     <outputName>resultsNoiseq.csv</outputName>
