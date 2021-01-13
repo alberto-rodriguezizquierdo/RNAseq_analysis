@@ -127,7 +127,7 @@ getConfigFile <- function(root){
 
   configFile$degenesParam$q <- validatedegenesParamq
 
-  validatedegenesParamm <- validateNumber(configFile$degenesParam$m)
+  validatedegenesParamm <- validateCharacter(configFile$degenesParam$m)
 
   configFile$degenesParam$m <- validatedegenesParamm
 
