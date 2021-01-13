@@ -53,7 +53,7 @@ noiseqApp <- function(root){
 
     eval(parse(text=paste0('myComparison <- configFile$',factors,'$comparison)')))
 
-    comparison_var <- paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison)
+    eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,' <- ProcessingNOISeqbio(myData',factors,',factors,myFactors',factors,',configFile)')))
 
 
 
