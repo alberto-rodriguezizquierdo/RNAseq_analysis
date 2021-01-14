@@ -149,6 +149,10 @@ getConfigFile <- function(root){
 
   configFile$output$graphType$biotypes <- validateGraphBiotypes
 
+  validateGraphPCA <- validateCharacter(configFile$output$graphType$PCA)
+
+  configFile$output$graphType$PCA <- validateGraphPCA
+
   validateGraphq <- validateNumber(configFile$output$graphType$q)
 
   configFile$output$graphType$q <- validateGraphq
@@ -230,7 +234,7 @@ nodesValidation <- function(configFile){
 
   outputNodes                 <- c('graph','graphType','outputName','outputDir')
 
-  graphNodes                  <- c('expr','MD', 'biotypes', 'q')
+  graphNodes                  <- c('expr','MD', 'biotypes', 'PCA','q')
 
   #Validation principal nodes
 

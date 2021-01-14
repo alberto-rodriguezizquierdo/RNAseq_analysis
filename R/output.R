@@ -11,7 +11,7 @@
 #'
 
 
-outputResults <- function(data, data_noiseq, outputPathName,configFile){
+outputResults <- function(data, data_noiseq, dataPCA, outputPathName,configFile, treatment){
 
   dirOutput         <- paste0(configFile$output$outputDir,outputPathName)
 
@@ -22,6 +22,8 @@ outputResults <- function(data, data_noiseq, outputPathName,configFile){
   graphTypeMD       <- configFile$output$graphType$MD
 
   graphTypeBiotypes <- configFile$output$graphType$biotypes
+
+  graphTypePCA      <- configFile$output$graphType$PCA
 
   graphTypeq        <- configFile$output$graphType$q
 
@@ -38,7 +40,7 @@ outputResults <- function(data, data_noiseq, outputPathName,configFile){
   }
 
   write.table(data, file=paste0(dirOutput,'/', configFile$output$outputName), sep=';')
-
+  browser()
   if (isTRUE(graph)){
 
     dir.create(paste0(dirOutput,'/figures'))
@@ -70,6 +72,17 @@ outputResults <- function(data, data_noiseq, outputPathName,configFile){
       DE.plot(data_noiseq, chromosomes = c(1, 2), q = graphTypeq, graphic = "distr")
 
       dev.off()
+    }
+    if(isTRUE(graphTypePCA)){
+
+      myPCA <- dat(dataPCA, type='PCA')
+
+      tiff(filename=paste0(dirOutput,'/figures/',outputPathName,'_PCA.tiff'),units="in", width=5, height=5, res=300)
+
+      explo.plot(myPCA, factor=treatment)
+
+      dev.off()
+
     }
   }
 

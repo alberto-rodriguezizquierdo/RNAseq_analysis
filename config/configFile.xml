@@ -301,6 +301,7 @@
       <expr>TRUE</expr>
       <MD>TRUE</MD>
       <biotypes></biotypes>
+      <PCA>TRUE</PCA>
       <q>0.9</q>
     </graphType>
     <outputName>resultsNoiseq.csv</outputName>

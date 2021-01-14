@@ -47,6 +47,8 @@ noiseqApp <- function(root){
 
     eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,',geneLength,myFactors',factors,')')))
 
+    eval(parse(text=paste0('myData',factors,'_2 <- ReadNOISeqFactorsPCA(myCounts',factors,',geneLength,myFactors',factors,')')))
+
     eval(parse(text=paste0('mySpecimen1 <- configFile$',factors,'$specimen1')))
 
     eval(parse(text=paste0('mySpecimen2 <- configFile$',factors,'$specimen2')))
@@ -59,7 +61,7 @@ noiseqApp <- function(root){
 
     outputPathName <- paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison)
 
-    eval(parse(text=paste0('outputResults(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg,',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,', outputPathName, configFile)')))
+    eval(parse(text=paste0('outputResults(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg,',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',myData',factors,'_2, outputPathName, configFile, configFile$',factors,'$treatment)')))
 
   }
   print('App finished successfully!')
