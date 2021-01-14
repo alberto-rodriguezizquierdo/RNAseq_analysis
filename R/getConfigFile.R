@@ -133,6 +133,26 @@ getConfigFile <- function(root){
 
 ####-------------------Validate Output------------------------####
 
+  validateGraph <- validateCharacter(configFile$output$graph)
+
+  configFile$output$graph <- validateGraph
+
+  validateGraphExpr <- validateCharacter(configFile$output$graphType$expr)
+
+  configFile$output$graphType$expr <- validateGraphExpr
+
+  validateGraphMD <- validateCharacter(configFile$output$graphType$MD)
+
+  configFile$output$graphType$MD <- validateGraphMD
+
+  validateGraphBiotypes <- validateCharacter(configFile$output$graphType$biotypes)
+
+  configFile$output$graphType$biotypes <- validateGraphBiotypes
+
+  validateGraphq <- validateNumber(configFile$output$graphType$q)
+
+  configFile$output$graphType$q <- validateGraphq
+
   validateOutputName  <- validateCharacter(configFile$output$outputName)
 
   configFile$output$outputName <- validateOutputName
@@ -208,7 +228,9 @@ nodesValidation <- function(configFile){
 
   degenesParamNodes           <- c('q','m')
 
-  outputNodes                 <- c('outputName','outputDir')
+  outputNodes                 <- c('graph','graphType','outputName','outputDir')
+
+  graphNodes                  <- c('expr','MD', 'biotypes', 'q')
 
   #Validation principal nodes
 
@@ -223,6 +245,8 @@ nodesValidation <- function(configFile){
   ValdegenesParamNodes          <- validateConfigNodes(degenesParamNodes, configFile$degenesParam)
 
   ValOutputNodes                <- validateConfigNodes(outputNodes, configFile$output)
+
+  ValGraphNodes                 <- validateConfigNodes(graphNodes, configFile$output$graphType)
 
   #Validation secondary nodes
 
@@ -333,18 +357,17 @@ validateConfigNodes <- function (nodes, configFile){
 #' @author Alberto Rodríguez Izquierdo
 
 
-validateCharacter <- function(configFile,
-                              isNa = NULL){
+validateCharacter <- function(configFile){
 
-  if (is.null(configFile)){
-#6   log_error <- paste0('Value ', configFile, ' is null. Please check configFile')
-#    logerror(log_error)
+  if (!is.null(configFile)){
 
-  }else{
-    if (!is.null(isNa)){
-      configFile <- is.character(configFile)
-    }else{
-      is.na(configFile)
+    if(configFile == "TRUE"){
+
+      configFile <- TRUE
+
+    }else if(configFile == "FALSE"){
+
+      configFile <- FALSE
     }
   }
 

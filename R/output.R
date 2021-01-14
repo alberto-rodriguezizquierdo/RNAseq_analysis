@@ -11,9 +11,19 @@
 #'
 
 
-outputResults <- function(data, data_noiseq, outputPathName,configFile, graph=FALSE){
+outputResults <- function(data, data_noiseq, outputPathName,configFile){
 
-  dirOutput <- paste0(configFile$output$outputDir,outputPathName)
+  dirOutput         <- paste0(configFile$output$outputDir,outputPathName)
+
+  graph             <- configFile$output$graph
+
+  graphTypeExpr     <- configFile$output$graphType$expr
+
+  graphTypeMD       <- configFile$output$graphType$MD
+
+  graphTypeBiotypes <- configFile$output$graphType$biotypes
+
+  graphTypeq        <- configFile$output$graphType$q
 
   if (!dir.exists(dirOutput)){
 
@@ -31,23 +41,36 @@ outputResults <- function(data, data_noiseq, outputPathName,configFile, graph=FA
 
   if (isTRUE(graph)){
 
-    tiff(filename=paste0(dirOutput,'/',outputPathName,'_expressionPlot.tiff'),units="in", width=5, height=5, res=300)
+    dir.create(paste0(dirOutput,'/figures'))
 
-    DE.plot(data_noiseq, q = 0.9, graphic = "expr", log.scale = TRUE)
+    if (isTRUE(graphTypeExpr)){
 
-    dev.off()
+      tiff(filename=paste0(dirOutput,'/figures/',outputPathName,'_expressionPlot.tiff'),units="in", width=5, height=5, res=300)
 
-    tiff(filename=paste0(dirOutput,'/',outputPathName,'_MDPlot.tiff'),units="in", width=5, height=5, res=300)
+      DE.plot(data_noiseq, q = graphTypeq, graphic = "expr", log.scale = TRUE)
 
-    DE.plot(data_noiseq, q = 0.9, graphic = "MD")
+      dev.off()
 
-    dev.off()
+    }
 
-#    tiff(filename=paste0(dirOutput,'/',outputPathName,'_BiotypesPlot.tiff'),units="in", width=5, height=5, res=300)
+    if (isTRUE(graphTypeMD)){
 
-#    DE.plot(data_noiseq, chromosomes = c(1, 2), q = 0.9, graphic = "distr")
+      tiff(filename=paste0(dirOutput,'/figures/',outputPathName,'_MDPlot.tiff'),units="in", width=5, height=5, res=300)
 
-#    dev.off()
+      DE.plot(data_noiseq, q = graphTypeq, graphic = "MD")
+
+      dev.off()
+
+    }
+
+    if (isTRUE(graphTypeBiotypes)){
+
+      tiff(filename=paste0(dirOutput,'/figures/',outputPathName,'_BiotypesPlot.tiff'),units="in", width=5, height=5, res=300)
+
+      DE.plot(data_noiseq, chromosomes = c(1, 2), q = graphTypeq, graphic = "distr")
+
+      dev.off()
+    }
   }
 
 
