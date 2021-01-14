@@ -2,7 +2,7 @@
 
 rm(list=ls())
 
-libInstalling <- c('dplyr','NOISeq', 'XML', 'GenomicFeatures', 'BiocManager', 'NOISeq', 'tidyverse')
+libInstalling <- c('RColorBrewer','pheatmap','dplyr','NOISeq','DESeq2', 'XML', 'GenomicFeatures', 'BiocManager', 'NOISeq', 'tidyverse')
 
 is.installed <- function(paquete) is.element(paquete, installed.packages())
 
@@ -29,5 +29,5 @@ for (rscripts in listFiles){
 }
 
 #noiseqApp(root)
-debug(noiseqApp(root))
+debug(RNASeqAnalysisApp(root))
 #loadingScripts   <- source(myDirectoryR,)

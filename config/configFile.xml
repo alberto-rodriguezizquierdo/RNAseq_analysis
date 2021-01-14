@@ -2,6 +2,11 @@
 <generalParameters>
   <dataPath>C:/Users/Alberto/Documents/Beebliography/essay/</dataPath>
 
+  <analysis>
+    <noiseq></noiseq>
+    <deseq></deseq>
+  </analysis>
+
   <bFactor_1>
     <specimen1>AS1B</specimen1>
     <specimen2>AS1B</specimen2>

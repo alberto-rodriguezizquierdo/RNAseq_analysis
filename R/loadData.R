@@ -40,7 +40,7 @@ loadData <- function(configFile){
   return(dataCounts)
 }
 
-#' @name creatingCountsByFactors
+#' @name creatingCountsByFactorsNoiseq
 #' @param dataCounts
 #' @param factor
 #' @import dplyr
@@ -50,7 +50,7 @@ loadData <- function(configFile){
 #' @author Alberto Rodriguez-Izquierdo, 2021
 #'
 
-creatingCountsByFactors <- function(dataCounts,factor){
+creatingCountsByFactorsNoiseq <- function(dataCounts,factor){
 
   SelDataCounts <- dplyr::select(dataCounts,factor$sample)
 
@@ -58,6 +58,30 @@ creatingCountsByFactors <- function(dataCounts,factor){
 
   return(SelDataCounts)
 }
+
+
+#' @name creatingCountsByFactorsDeseq
+#' @param dataCounts
+#' @param factor
+#' @import dplyr
+#'
+#' @return selDataCounts
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
+
+creatingCountsByFactorsDeseq <- function(dataCounts,factor){
+
+  SelDataCounts <- dplyr::select(dataCounts,factor$sample)
+
+  SelDataCounts <- cbind(gene_id=dataCounts$gene_id, SelDataCounts)
+
+  #countData     <- as.matrix(SelDataCounts, row.names=dataCounts$gene_id)
+
+  return(SelDataCounts)
+}
+
+
 
 
 #' @name ReadNOISeqFactors
@@ -80,6 +104,30 @@ ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
 
   return(myData)
 }
+
+#' @name ReadDeseqFactors
+#' @param myCounts
+#' @param myFactor
+#' @param lengthGene
+#' @import DESeq2
+#' @import dplyr
+#'
+#' @return myData
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
+
+
+
+ReadDeseqFactors <- function(countData, lengthGene, myFactor){
+
+  colData <- myFactor$sample
+
+  myData <- DESeqDataSetFromMatrix(countData, colData, design= ~ time + strain + NaCl)
+
+  return(myData)
+}
+
 
 
 #' @name ProcessingNOISeqbio
