@@ -40,7 +40,7 @@ outputResults <- function(data, data_noiseq, dataPCA, outputPathName,configFile,
   }
 
   write.table(data, file=paste0(dirOutput,'/', configFile$output$outputName), sep=';')
-  browser()
+
   if (isTRUE(graph)){
 
     dir.create(paste0(dirOutput,'/figures'))
