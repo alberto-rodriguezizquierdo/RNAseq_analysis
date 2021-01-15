@@ -119,52 +119,33 @@ ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
 
 
 
-ReadDeseqFactors <- function(countData, lengthGene, myFactor){
+ReadDeseqFactors <- function(countData,myFactor){
 
-  colData <- myFactor$sample
+  colData   <- myFactor$sample
 
-  myData <- DESeqDataSetFromMatrix(countData, colData, design= ~ time + strain + NaCl)
+  myData    <- DESeqDataSetFromMatrix(countData, colData, design= ~ time + strain + NaCl)
 
   return(myData)
 }
 
 
-
-#' @name ProcessingNOISeqbio
-#' @param myCounts
-#' @param myFactor
-#' @param lengthGene
+#' @name ReadNOISeqFactorsPCA
+#' @param my
+#' @param configFile
 #' @import NOISeq
-#' @import dplyr
 #'
-#' @return value_noiseqbio
-#'
+#' @return myFactors
 #' @author Alberto Rodriguez-Izquierdo, 2021
-#'
 
 
-ProcessingNOISeqbio <- function(data,factor_nb,factor, configFile){
+ReadNOISeqFactorsPCA <- function(myCounts, lengthGene, myFactor){
 
-#-----------------specifying variables-------------------#
-  nclust_val        <- configFile$condAnalysisNOISeqbio$nclust
-  k_val             <- configFile$condAnalysisNOISeqbio$k
-  norm_val          <- configFile$condAnalysisNOISeqbio$norm
-  factor_val        <- eval(parse(text=paste0('configFile$',factor_nb,'$treatment')))
-  conditions_val    <- eval(parse(text=paste0('c(configFile$',factor_nb,'$samples_1$factor_1,configFile$',factor_nb,'$samples_2$factor_2)')))
-  filter_val        <- configFile$condAnalysisNOISeqbio$filter
-  r_val             <- configFile$condAnalysisNOISeqbio$r
-  random.seed_val   <- configFile$condAnalysisNOISeqbio$random.seed
+  myCounts2 <- myCounts
 
-  value_noiseqbio   <- noiseqbio(data,
-                                 nclust = nclust_val,
-                                 k = k_val,
-                                 norm = norm_val,
-                                 factor = factor_val,
-                                 conditions = conditions_val,
-                                 filter = filter_val,
-                                 r = r_val,
-                                 random.seed = random.seed_val)
+  myCounts2 <- myCounts2 + runif(nrow(myCounts2) * 4,3,5)
 
-  return(value_noiseqbio)
+  mydata2   <- NOISeq::readData(data=myCounts2, length = lengthGene, factors=myFactor)
 
+
+  return(mydata2)
 }

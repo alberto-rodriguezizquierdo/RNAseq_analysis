@@ -20,23 +20,3 @@ loadFactors <- function(configFile){
   return(myfactor)
 }
 
-#' @name ReadNOISeqFactorsPCA
-#' @param my
-#' @param configFile
-#' @import NOISeq
-#'
-#' @return myFactors
-#' @author Alberto Rodriguez-Izquierdo, 2021
-
-
-ReadNOISeqFactorsPCA <- function(myCounts, lengthGene, myFactor){
-
-  myCounts2 <- myCounts
-
-  myCounts2 <- myCounts2 + runif(nrow(myCounts2) * 4,3,5)
-
-  mydata2   <- NOISeq::readData(data=myCounts2, length = lengthGene, factors=myFactor)
-
-
-  return(mydata2)
-}

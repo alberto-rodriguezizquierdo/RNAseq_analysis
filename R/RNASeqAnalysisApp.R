@@ -45,11 +45,15 @@ RNASeqAnalysisApp <- function(root){
 
     if (isTRUE(configFile$analysis$noiseq)){
 
+      ##---------------------Loading data from Factors------------------------##
+
       eval(parse(text=paste0('myCounts', factors,' <- creatingCountsByFactorsNoiseq(dataCounts,myFactors',factors,')')))
 
       eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,',geneLength,myFactors',factors,')')))
 
       eval(parse(text=paste0('myData',factors,'_2 <- ReadNOISeqFactorsPCA(myCounts',factors,',geneLength,myFactors',factors,')')))
+
+      ##--------------Define variables to put into the analysis---------------##
 
       eval(parse(text=paste0('mySpecimen1 <- configFile$',factors,'$specimen1')))
 
@@ -57,19 +61,27 @@ RNASeqAnalysisApp <- function(root){
 
       eval(parse(text=paste0('myComparison <- configFile$',factors,'$comparison')))
 
+      ##--------------Processing data and calculating DEGenes-----------------##
+
       eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,' <- ProcessingNOISeqbio(myData',factors,',factors,myFactors',factors,',configFile)')))
 
       eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg <- calculateDEGenes(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',configFile)')))
+
+      ##----------------------------Output Results----------------------------##
 
       outputPathName <- paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison)
 
       eval(parse(text=paste0('outputResults(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg,',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',myData',factors,'_2, outputPathName, configFile, configFile$',factors,'$treatment)')))
 
 
-      }
+    }
+
     if (isTRUE(configFile$analysis$deseq)){
 
       eval(parse(text=paste0('myCounts', factors,' <- creatingCountsByFactorsDeseq(dataCounts,myFactors',factors,')')))
+
+      eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,')')))
+
 
     }
   }
