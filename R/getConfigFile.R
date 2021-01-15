@@ -13,7 +13,7 @@ getConfigFile <- function(root){
   #loginfo('Reading configFile...')
   configFile <- readConfigFile(root)
 
-
+  browser()
   #####-------------------Validations----------------------######
 
   #loginfo('Validating configFile...')
@@ -29,47 +29,41 @@ getConfigFile <- function(root){
 #  error <- FALSE
 
   #Validate generalParameters
-
+  browser()
 
   validateDataPath    <- validateCharacter(configFile$dataPath)
 
   configFile$dataPath <- validateDataPath
 
+  validateSamplesFactorPath    <- validateCharacter(configFile$SamplesFactorPath)
+
+  configFile$SamplesFactorPath <- validateSamplesFactorPath
+
+  validateNOISeq <- validateCharacter(configFile$analysis$noiseq)
+
+  configFile$analysis$noiseq <- validateNOISeq
+
+  validateDESeq <- validateCharacter(configFile$analysis$deseq)
+
+  configFile$analysis$deseq <- validateDESeq
+
+
   bFactors <- configFile[grepl("bFactor",names(configFile))]
 
   for (factors in names(bFactors)){
 
-    validateSpecimen1     <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$specimen1)')))
+    validateNameSamples1  <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$name_samples_1)')))
 
-    eval(parse(text=paste0('configFile$', factors,'$specimen1 <- validateSpecimen1')))
+    eval(parse(text=paste0('configFile$', factors,'$name_samples_1 <- validateNameSamples1')))
 
-    validateSpecimen2     <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$specimen2)')))
+    validateNameSamples2 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$name_samples_2)')))
 
-    eval(parse(text=paste0('configFile$', factors,'$specimen2 <- validateSpecimen2')))
+    eval(parse(text=paste0('configFile$', factors,'$name_samples_2 <- validateNameSamples2')))
 
-    validatecomparison   <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$comparison)')))
+    validateFactor <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$factor)')))
 
-    eval(parse(text=paste0('configFile$', factors,'$comparison <- validatecomparison')))
+    eval(parse(text=paste0('configFile$', factors,'$factor <- validateFactor')))
 
-    validateTreatment     <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$treatment)')))
-
-    eval(parse(text=paste0('configFile$', factors,'$treatment <- validateTreatment')))
-
-    validateNameSamples1  <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_1$name_samples)')))
-
-    eval(parse(text=paste0('configFile$', factors,'$samples_1$name_samples <- validateNameSamples1')))
-
-    validateNameSamples2 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_2$name_samples)')))
-
-    eval(parse(text=paste0('configFile$', factors,'$samples_2$name_samples <- validateNameSamples2')))
-
-    validateFactor1 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_1$factor_1)')))
-
-    eval(parse(text=paste0('configFile$', factors,'$samples_1$factor_1 <- validateFactor1')))
-
-    validateFactor2 <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$samples_2$factor_2)')))
-
-    eval(parse(text=paste0('configFile$', factors,'$samples_2$factor_2 <- validateFactor2')))
     }
 
 
@@ -180,7 +174,7 @@ getConfigFile <- function(root){
 #' @author Alberto Rodriguez-Izquierdo, 2021
 
 readConfigFile <- function(root){
-
+  browser()
   require(XML)
 
   myDirectoryConfigFile <- paste0(root, 'config/')
@@ -210,12 +204,14 @@ readConfigFile <- function(root){
 
 
 nodesValidation <- function(configFile){
-
+  browser()
   #Building list with principal and secondary nodes for validation
 
-  principalNodes          <- c('dataPath','output')
+  principalNodes              <- c('dataPath','samplesFactorFilename','output')
 
-  bFactors                <- configFile[grepl("bFactor",names(configFile))]
+  analysisNodes               <- c('noiseq','deseq')
+
+  bFactors                    <- configFile[grepl("bFactor",names(configFile))]
 
   geneLengthNodes             <- c('geneLengthDir',
                                    'geneLengthFilename',
@@ -238,7 +234,9 @@ nodesValidation <- function(configFile){
 
   #Validation principal nodes
 
-  generalParametersNodes        <- validateConfigNodes (principalNodes, configFile)
+  generalParametersNodes        <- validateConfigNodes(principalNodes, configFile)
+
+  ValAnalysisNodes              <- validateConfigNodes(analysisNodes, configFile$analysis)
 
   bFactorsNodes                 <- validateConfigNodes(bFactors,configFile)
 
@@ -258,50 +256,30 @@ nodesValidation <- function(configFile){
 
     factor <- eval(parse(text=paste0('configFile$',factors)))
     ##-----------------------Define name of samples------------------------##
-    nameFactor1 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$samples_1$name_samples'))),',')
+    nameFactor1 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$name_samples_1'))),',')
     factor$samples_1$name_samples <- nameFactor1
 
-    nameFactor2 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$samples_2$name_samples'))),',')
+    nameFactor2 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$name_samples_2'))),',')
     factor$samples_2$name_samples <- nameFactor2
 
     ##----------------------------Splitting by ','-------------------------##
-    eval(parse(text=paste0('configFile$',factors,'$samples_1$name_samples <- ',factor$samples_1$name_samples)))
+    eval(parse(text=paste0('configFile$',factors,'$name_samples_1 <- ',factor$name_samples_1)))
 
-    eval(parse(text=paste0('configFile$',factors,'$samples_2$name_samples <- ',factor$samples_2$name_samples)))
+    eval(parse(text=paste0('configFile$',factors,'$name_samples_2 <- ',factor$name_samples_2)))
 
     ##------------------------------Validate nodes--------------------------##
 
-    bFactorsSpecimen1   <- eval(parse(text=paste0('configFile$',factors,'$specimen1')))
+    bFactorsLevels1     <- eval(parse(text=paste0('configFile$',factors,'$name_samples_1')))
 
-    bFactorsSpecimen2   <- eval(parse(text=paste0('configFile$',factors,'$specimen2')))
+    bFactorsLevels2     <- eval(parse(text=paste0('configFile$',factors,'$name_samples_2')))
 
-    bFactorscomparison <- eval(parse(text=paste0('configFile$',factors,'$comparison')))
+    bFactorsLevelsFact <- eval(parse(text=paste0('configFile$',factors,'$factor')))
 
-    bFactorsTreatment   <- eval(parse(text=paste0('configFile$',factors,'$treatment')))
+    eval(parse(text=paste0('validationNode', factors, 'sampleName <- validateConfigNodes(bFactorsLevels1,configFile$', factors,'$name_samples_1)')))
 
-    bFactorsLevels1     <- eval(parse(text=paste0('configFile$',factors,'$samples_1$name_samples')))
+    eval(parse(text=paste0('validationNode', factors, 'sampleName <- validateConfigNodes(bFactorsLevels2,configFile$', factors,'$name_samples_2)')))
 
-    bFactorsLevels2     <- eval(parse(text=paste0('configFile$',factors,'$samples_2$name_samples')))
-
-    bFactorsLevelsFact1 <- eval(parse(text=paste0('configFile$',factors,'$samples_1$factor_1')))
-
-    bFactorsLevelsFact2 <- eval(parse(text=paste0('configFile$',factors,'$samples_2$factor_2')))
-
-    eval(parse(text=paste0('validationNode', factors, 'specimen1 <- validateConfigNodes(bFactorsSpecimen1,configFile$', factors,'$specimen1)')))
-
-    eval(parse(text=paste0('validationNode', factors, 'specimen2 <- validateConfigNodes(bFactorsSpecimen2,configFile$', factors,'$specimen2)')))
-
-    eval(parse(text=paste0('validationNode', factors, 'comparison <- validateConfigNodes(bFactorscomparison,configFile$', factors,'$comparison)')))
-
-    eval(parse(text=paste0('validationNode', factors, 'treatment <- validateConfigNodes(bFactorsTreatment,configFile$', factors,'$treatment)')))
-
-    eval(parse(text=paste0('validationNode', factors, 'sampleName <- validateConfigNodes(bFactorsLevels1,configFile$', factors,'$samples_1$name_samples)')))
-
-    eval(parse(text=paste0('validationNode', factors, 'sampleName <- validateConfigNodes(bFactorsLevels2,configFile$', factors,'$samples_2$name_samples)')))
-
-    eval(parse(text=paste0('validationNode', factors, 'factor1 <- validateConfigNodes(bFactorsLevelsFact1,configFile$', factors,'$samples_1$factor_1)')))
-
-    eval(parse(text=paste0('validationNode', factors, 'factor2 <- validateConfigNodes(bFactorsLevelsFact2,configFile$', factors,'$samples_2$factor_2)')))
+    eval(parse(text=paste0('validationNode', factors, 'factor <- validateConfigNodes(bFactorsLevelsFact,configFile$', factors,'$factor)')))
   }
 
   return(configFile)

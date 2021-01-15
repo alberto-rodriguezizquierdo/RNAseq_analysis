@@ -17,11 +17,13 @@ RNASeqAnalysisApp <- function(root){
 ########---------------Processing data------------------########
 ####---------------------Building factors-------------------####
 
+  factorFile <- readFactor(configFile)
+
   bFactors <- configFile[grepl("bFactor",names(configFile))]
 
   for (factors in names(bFactors)){
 
-    eval(parse(text=paste0('myFactors',factors,' <- loadFactors(configFile$',factors,')')))
+    eval(parse(text=paste0('myFactors',factors,' <- loadFactors(factorFile,configFile$',factors,')')))
 
   }
 ####----------------Read data with NOISeq App--------------####
@@ -55,17 +57,17 @@ RNASeqAnalysisApp <- function(root){
 
       ##--------------Define variables to put into the analysis---------------##
 
-      eval(parse(text=paste0('mySpecimen1 <- configFile$',factors,'$specimen1')))
+#      eval(parse(text=paste0('mySpecimen1 <- configFile$',factors,'$specimen1')))
 
-      eval(parse(text=paste0('mySpecimen2 <- configFile$',factors,'$specimen2')))
+#      eval(parse(text=paste0('mySpecimen2 <- configFile$',factors,'$specimen2')))
 
-      eval(parse(text=paste0('myComparison <- configFile$',factors,'$comparison')))
+#      eval(parse(text=paste0('myComparison <- configFile$',factors,'$comparison')))
 
       ##--------------Processing data and calculating DEGenes-----------------##
 
-      eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,' <- ProcessingNOISeqbio(myData',factors,',factors,myFactors',factors,',configFile)')))
+#      eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,' <- ProcessingNOISeqbio(myData',factors,',factors,myFactors',factors,',configFile)')))
 
-      eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg <- calculateDEGenes(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',configFile)')))
+#      eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg <- calculateDEGenes(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',configFile)')))
 
       ##----------------------------Output Results----------------------------##
 
@@ -80,7 +82,7 @@ RNASeqAnalysisApp <- function(root){
 
       eval(parse(text=paste0('myCounts', factors,' <- creatingCountsByFactorsDeseq(dataCounts,myFactors',factors,')')))
 
-      eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,')')))
+      eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,', configFile)')))
 
 
     }

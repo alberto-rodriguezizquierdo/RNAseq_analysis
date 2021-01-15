@@ -74,11 +74,15 @@ creatingCountsByFactorsDeseq <- function(dataCounts,factor){
 
   SelDataCounts <- dplyr::select(dataCounts,factor$sample)
 
-  SelDataCounts <- cbind(gene_id=dataCounts$gene_id, SelDataCounts)
+  #SelDataCounts <- cbind(gene_id=dataCounts$gene_id, SelDataCounts)
 
-  #countData     <- as.matrix(SelDataCounts, row.names=dataCounts$gene_id)
+  countData     <- as.matrix(SelDataCounts)
 
-  return(SelDataCounts)
+  rownames(countData) <- dataCounts$gene_id
+
+  colnames(countData) <- factor$sample
+
+  return(countData)
 }
 
 
@@ -108,7 +112,7 @@ ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
 #' @name ReadDeseqFactors
 #' @param myCounts
 #' @param myFactor
-#' @param lengthGene
+#'
 #' @import DESeq2
 #' @import dplyr
 #'
@@ -119,19 +123,49 @@ ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
 
 
 
-ReadDeseqFactors <- function(countData,myFactor){
+ReadDeseqFactors <- function(countData,myFactor, configFile){
+  browser()
 
-  colData   <- myFactor$sample
+  myFactor <- data.frame(myFactor)
 
-  myData    <- DESeqDataSetFromMatrix(countData, colData, design= ~ time + strain + NaCl)
+  #rownames(colData) <- 1
+
+  for(columnFactor in names(myFactor)){
+
+    if (!columnFactor == 'batch'){
+      if (!columnFactor == "sample"){
+
+        if (eval(parse(text=paste0('length(unique(myFactor$',columnFactor,'))')))==1){
+
+          eval(parse(text=paste0('myFactor$',columnFactor,' <- NULL')))
+
+        }
+
+      if (!exists('designParameters')){
+
+        designParameters <- columnFactor
+
+      }else{
+
+        designParameters <- paste(designParameters, columnFactor, sep=' + ')
+
+        }
+      }
+    }
+  }
+
+  colData <- myFactor
+
+  myData    <- eval(parse(text=paste0('DESeqDataSetFromMatrix(countData=countData, colData=colData, design= ~ ',designParameters,')')))
 
   return(myData)
 }
 
 
 #' @name ReadNOISeqFactorsPCA
-#' @param my
-#' @param configFile
+#' @param myCounts
+#' @param myFactor
+#' @param lengthGene
 #' @import NOISeq
 #'
 #' @return myFactors

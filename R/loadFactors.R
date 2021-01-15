@@ -1,3 +1,23 @@
+
+#' @name readFactors
+#'
+#' @param configFile
+#' @import NOISeq
+#'
+#' @return myFactors
+#' @author Alberto Rodriguez-Izquierdo, 2021
+
+
+
+readFactors <- function(configFile){
+
+  factors <- read.csv(configFile$samplesFactorFilename, sep=';')
+
+  return(factors)
+}
+
+
+
 #' @name loadFactors
 #' @param dataCounts
 #' @param configFile
@@ -7,11 +27,11 @@
 #' @author Alberto Rodriguez-Izquierdo, 2021
 
 
-loadFactors <- function(configFile){
+loadFactors <- function(factorFile,configFile){
+  browser()
+  myfactor1 <- dplyr::select(myFactorFile,configFile$name_samples_1)
 
-  myfactor1 <- eval(parse(text=paste0('data.frame(sample=configFile$samples_1$name_samples,',configFile$treatment,'=configFile$samples_1$factor_1)')))
-
-  myfactor2 <- eval(parse(text=paste0('data.frame(sample=configFile$samples_2$name_samples,',configFile$treatment,'=configFile$samples_2$factor_2)')))
+  myfactor2 <- dplyr::select(myFactorFile,configFile$name_samples_2)
 
   myfactor_first  <- rbind(myfactor1,myfactor2)
 
