@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generalParameters>
   <dataPath>C:/Users/Alberto/Documents/Beebliography/essay/</dataPath>
-  <samplesFactorFilename>C:/Users/Alberto/Documents/Beebliography/essay/sampleFactors.csv</samplesFactorFilename>
+  <samplesFactorFilename>C:/Users/Alberto/Documents/Beebliography/sampleFactors.csv</samplesFactorFilename>
 
   <analysis>
     <noiseq></noiseq>
@@ -11,264 +11,27 @@
   <bFactor_1>
     <name_samples_1>AS1B01,AS1B02,AS1B03</name_samples_1>
     <name_samples_2>AS1B13,AS1B14,AS1B15</name_samples_2>
-    <factor></factor>
+    <factor>strain</factor>
   </bFactor_1>
 
   <bFactor_2>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B16,AS1B17,AS1B18</name_samples_2>
-    <factor></factor>
+    <factor>strain</factor>
   </bFactor_2>
 
   <bFactor_3>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B19,AS1B20,AS1B21</name_samples_2>
-    <factor></factor>
+    <factor>factor</factor>
   </bFactor_3>
 
   <bFactor_4>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B22,AS1B23,AS1B24</name_samples_2>
-    <factor></factor>
+    <factor>strain</factor>
   </bFactor_4>
 
-  <bFactor_5>
-    <specimen1>AS1B</specimen1>
-    <specimen2>AS1B</specimen2>
-    <comparison>3g0D_vs_5g1D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>AS1B13,AS1B14,AS1B15</name_samples>
-      <factor_1>3g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>AS1B25,AS1B26,AS1B27</name_samples>
-      <factor_2>5g</factor_2>
-      <time>1</time>
-    </samples_2>
-  </bFactor_5>
-
-  <bFactor_6>
-    <specimen1>AS1B</specimen1>
-    <specimen2>AS1B</specimen2>
-    <comparison>3g0D_vs_5g7D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>AS1B13,AS1B14,AS1B15</name_samples>
-      <factor_1>3g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>AS1B28,AS1B29,AS1B30</name_samples>
-      <factor_2>5g</factor_2>
-      <time>7</time>
-    </samples_2>
-  </bFactor_6>
-
-  <bFactor_7>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>control0D_vs_3gL0D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11001,R11002,R11003</name_samples>
-      <factor_1>0g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11013,R11014,R11015</name_samples>
-      <factor_2>3g</factor_2>
-      <time>0</time>
-    </samples_2>
-  </bFactor_7>
-
-  <bFactor_8>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>3gL0D_vs_3gL1D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11013,R11014,R11015</name_samples>
-      <factor_1>3g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11016,R11017,R11018</name_samples>
-      <factor_2>3g</factor_2>
-      <time>1</time>
-    </samples_2>
-  </bFactor_8>
-
-  <bFactor_9>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>3gL0D_vs_3gL7D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11013,R11014,R11015</name_samples>
-      <factor_1>3g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11019,R11020,R11021</name_samples>
-      <factor_2>3g</factor_2>
-      <time>7</time>
-    </samples_2>
-  </bFactor_9>
-
-  <bFactor_10>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>3gL0D_vs_5gL0D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11013,R11014,R11015</name_samples>
-      <factor_1>3g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11022,R11023,R11024</name_samples>
-      <factor_2>5g</factor_2>
-      <time>0</time>
-    </samples_2>
-  </bFactor_10>
-
-  <bFactor_11>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>3gL0D_vs_5gL1D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11013,R11014,R11015</name_samples>
-      <factor_1>3g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11025,R11026,R11027</name_samples>
-      <factor_2>5g</factor_2>
-      <time>1</time>
-    </samples_2>
-  </bFactor_11>
-
-  <bFactor_12>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>3gL0D_vs_5gL7D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11013,R11014,R11015</name_samples>
-      <factor_1>3g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11028,R11029,R11030</name_samples>
-      <factor_2>5g</factor_2>
-      <time>7</time>
-    </samples_2>
-  </bFactor_12>
-
-  <bFactor_13>
-    <specimen1>AS1B</specimen1>
-    <specimen2>AS1B</specimen2>
-    <comparison>AS1B_Control0D_vs_Control7D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>AS1B01,AS1B02,AS1B03</name_samples>
-      <factor_1>0g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>AS1B04,AS1B05,AS1B06</name_samples>
-      <factor_2>0g</factor_2>
-      <time>7</time>
-    </samples_2>
-  </bFactor_13>
-
-  <bFactor_14>
-    <specimen1>AS1B</specimen1>
-    <specimen2>AS1B</specimen2>
-    <comparison>AS1B_Control0D_vs_Control14D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>AS1B01,AS1B02,AS1B03</name_samples>
-      <factor_1>0g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>AS1B07,AS1B08,AS1B09</name_samples>
-      <factor_2>0g</factor_2>
-      <time>14</time>
-    </samples_2>
-  </bFactor_14>
-
-  <bFactor_15>
-    <specimen1>AS1B</specimen1>
-    <specimen2>AS1B</specimen2>
-    <comparison>AS1B_Control0D_vs_Control21D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>AS1B01,AS1B02,AS1B03</name_samples>
-      <factor_1>0g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>AS1B10,AS1B11,AS1B12</name_samples>
-      <factor_2>0g</factor_2>
-      <time>21</time>
-    </samples_2>
-  </bFactor_15>
-
-  <bFactor_16>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>r110_Control0D_vs_Control7D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11001,R11002,R11003</name_samples>
-      <factor_1>0g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11004,R11005,R11006</name_samples>
-      <factor_2>0g</factor_2>
-      <time>7</time>
-    </samples_2>
-  </bFactor_16>
-
-  <bFactor_17>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>r110_Control0D_vs_Control14D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11001,R11002,R11003</name_samples>
-      <factor_1>0g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11007,R11008,R11009</name_samples>
-      <factor_2>0g</factor_2>
-      <time>14</time>
-    </samples_2>
-  </bFactor_17>
-
-  <bFactor_18>
-    <specimen1>R110</specimen1>
-    <specimen2>R110</specimen2>
-    <comparison>r110_Control0D_vs_Control21D</comparison>
-    <treatment>NaCl</treatment>
-    <samples_1>
-      <name_samples>R11001,R11002,R11003</name_samples>
-      <factor_1>0g</factor_1>
-      <time>0</time>
-    </samples_1>
-    <samples_2>
-      <name_samples>R11010,R11011,R11012</name_samples>
-      <factor_2>0g</factor_2>
-      <time>21</time>
-    </samples_2>
-  </bFactor_18>
 
   <geneLength>
     <geneLengthDir>C:/Users/Alberto/Documents/Beebliography/</geneLengthDir>

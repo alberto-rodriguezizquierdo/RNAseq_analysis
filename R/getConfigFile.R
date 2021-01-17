@@ -13,7 +13,7 @@ getConfigFile <- function(root){
   #loginfo('Reading configFile...')
   configFile <- readConfigFile(root)
 
-  browser()
+
   #####-------------------Validations----------------------######
 
   #loginfo('Validating configFile...')
@@ -29,15 +29,15 @@ getConfigFile <- function(root){
 #  error <- FALSE
 
   #Validate generalParameters
-  browser()
+
 
   validateDataPath    <- validateCharacter(configFile$dataPath)
 
   configFile$dataPath <- validateDataPath
 
-  validateSamplesFactorPath    <- validateCharacter(configFile$SamplesFactorPath)
+  validateSamplesFactorPath    <- validateCharacter(configFile$samplesFactorFilename)
 
-  configFile$SamplesFactorPath <- validateSamplesFactorPath
+  configFile$samplesFactorFilename <- validateSamplesFactorPath
 
   validateNOISeq <- validateCharacter(configFile$analysis$noiseq)
 
@@ -174,7 +174,7 @@ getConfigFile <- function(root){
 #' @author Alberto Rodriguez-Izquierdo, 2021
 
 readConfigFile <- function(root){
-  browser()
+
   require(XML)
 
   myDirectoryConfigFile <- paste0(root, 'config/')
@@ -204,7 +204,7 @@ readConfigFile <- function(root){
 
 
 nodesValidation <- function(configFile){
-  browser()
+
   #Building list with principal and secondary nodes for validation
 
   principalNodes              <- c('dataPath','samplesFactorFilename','output')
@@ -257,10 +257,10 @@ nodesValidation <- function(configFile){
     factor <- eval(parse(text=paste0('configFile$',factors)))
     ##-----------------------Define name of samples------------------------##
     nameFactor1 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$name_samples_1'))),',')
-    factor$samples_1$name_samples <- nameFactor1
+    factor$name_samples_1 <- nameFactor1
 
     nameFactor2 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$name_samples_2'))),',')
-    factor$samples_2$name_samples <- nameFactor2
+    factor$name_samples_2 <- nameFactor2
 
     ##----------------------------Splitting by ','-------------------------##
     eval(parse(text=paste0('configFile$',factors,'$name_samples_1 <- ',factor$name_samples_1)))

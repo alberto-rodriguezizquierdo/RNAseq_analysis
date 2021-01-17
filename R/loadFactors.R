@@ -1,5 +1,5 @@
 
-#' @name readFactors
+#' @name readFactor
 #'
 #' @param configFile
 #' @import NOISeq
@@ -9,7 +9,7 @@
 
 
 
-readFactors <- function(configFile){
+readFactor <- function(configFile){
 
   factors <- read.csv(configFile$samplesFactorFilename, sep=';')
 
@@ -28,10 +28,39 @@ readFactors <- function(configFile){
 
 
 loadFactors <- function(factorFile,configFile){
-  browser()
-  myfactor1 <- dplyr::select(myFactorFile,configFile$name_samples_1)
 
-  myfactor2 <- dplyr::select(myFactorFile,configFile$name_samples_2)
+
+  for (x in configFile$name_samples_1){
+
+    if (exists('myfactor1')==FALSE){
+
+      myfactor1 <- filter(factorFile, sample == x)
+
+    }else{
+
+      myfactor_x <- filter(factorFile, sample == x)
+
+      myfactor1 <- rbind(myfactor1, myfactor_x)
+
+    }
+
+  }
+
+  for (y in configFile$name_samples_2){
+
+    if (exists('myfactor2')==FALSE){
+
+      myfactor2 <- filter(factorFile, sample == y)
+
+    }else{
+
+      myfactor_y <- filter(factorFile, sample == y)
+
+      myfactor2 <- rbind(myfactor2, myfactor_y)
+
+    }
+  }
+
 
   myfactor_first  <- rbind(myfactor1,myfactor2)
 
