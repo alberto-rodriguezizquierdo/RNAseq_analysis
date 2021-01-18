@@ -82,9 +82,12 @@ RNASeqAnalysisApp <- function(root){
 
       eval(parse(text=paste0('myCounts', factors,' <- creatingCountsByFactorsDeseq(dataCounts,myFactors',factors,')')))
 
-      eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,', configFile)')))
-
-
+      eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,', configFile, factors)')))
+      
+      
+      
+      
+      
     }
   }
 

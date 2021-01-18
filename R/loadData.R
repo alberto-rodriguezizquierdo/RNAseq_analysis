@@ -123,41 +123,44 @@ ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
 
 
 
-ReadDeseqFactors <- function(countData,myFactor, configFile){
-  browser()
+ReadDeseqFactors <- function(countData,myFactor, configFile, factors){
 
   myFactor <- data.frame(myFactor)
+  
+  usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factor')))
 
   #rownames(colData) <- 1
 
-  for(columnFactor in names(myFactor)){
+#  for(columnFactor in names(myFactor)){
 
-    if (!columnFactor == 'batch'){
-      if (!columnFactor == "sample"){
+#    if (!columnFactor == 'batch'){
+#      if (!columnFactor == "sample"){
 
-        if (eval(parse(text=paste0('length(unique(myFactor$',columnFactor,'))')))==1){
+#        if (eval(parse(text=paste0('length(unique(myFactor$',columnFactor,'))')))==1){
 
-          eval(parse(text=paste0('myFactor$',columnFactor,' <- NULL')))
+#          eval(parse(text=paste0('myFactor$',columnFactor,' <- NULL')))
 
-        }
+#        }
 
-      if (!exists('designParameters')){
+#      if (!exists('designParameters')){
 
-        designParameters <- columnFactor
+#        designParameters <- columnFactor
 
-      }else{
+#      }else{
 
-        designParameters <- paste(designParameters, columnFactor, sep=' + ')
+#        designParameters <- paste(designParameters, columnFactor, sep=' + ')
 
-        }
-      }
-    }
-  }
+#        }
+#      }
+#    }
+#  }
 
   colData <- myFactor
 
-  myData    <- eval(parse(text=paste0('DESeqDataSetFromMatrix(countData=countData, colData=colData, design= ~ ',designParameters,')')))
-
+  myData    <- eval(parse(text=paste0('DESeqDataSetFromMatrix(countData=countData, colData=colData, design= ~ ',usedFactor,')')))
+  
+  myData <- myData[rowSums(counts(myData)) > 5, ]
+  
   return(myData)
 }
 

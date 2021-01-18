@@ -124,6 +124,13 @@ getConfigFile <- function(root){
   validatedegenesParamm <- validateCharacter(configFile$degenesParam$m)
 
   configFile$degenesParam$m <- validatedegenesParamm
+  
+  
+####------------------Validate deseqProperties Nodes---------------####
+  
+  validatedeseqPoisson <- validateCharacter(configFile$deseqProperties$poisson)
+  
+  configFile$deseqProperties$poisson <- validatedeseqPoisson
 
 ####-------------------Validate Output------------------------####
 
@@ -231,6 +238,8 @@ nodesValidation <- function(configFile){
   outputNodes                 <- c('graph','graphType','outputName','outputDir')
 
   graphNodes                  <- c('expr','MD', 'biotypes', 'PCA','q')
+  
+  deseqPropertiesNodes        <- c('poisson')
 
   #Validation principal nodes
 
@@ -245,6 +254,8 @@ nodesValidation <- function(configFile){
   ValcondAnalysisNOISeqbioNodes <- validateConfigNodes(condAnalysisNOISeqbioNodes, configFile$condAnalysisNOISeqbio)
 
   ValdegenesParamNodes          <- validateConfigNodes(degenesParamNodes, configFile$degenesParam)
+  
+  valdeseqPropertiesNodes       <- validateConfigNodes(deseqPropertiesNodes, configFile$deseqProperties)
 
   ValOutputNodes                <- validateConfigNodes(outputNodes, configFile$output)
 

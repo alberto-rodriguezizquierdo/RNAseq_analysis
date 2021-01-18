@@ -2,7 +2,7 @@
 
 rm(list=ls())
 
-libInstalling <- c('RColorBrewer','pheatmap','dplyr','NOISeq','DESeq2', 'XML', 'GenomicFeatures', 'BiocManager', 'NOISeq', 'tidyverse')
+libInstalling <- c('RColorBrewer','pheatmap','dplyr','NOISeq','DESeq2', 'XML', 'GenomicFeatures', 'BiocManager', 'NOISeq', 'tidyverse', 'PoiClaClu', 'ggplot')
 
 is.installed <- function(paquete) is.element(paquete, installed.packages())
 
@@ -17,7 +17,7 @@ for (packages in libInstalling){
 
 
 #Setting Working directories
-root                  <- "C:/Users/Alberto/Documents/BrewPi/brewpi-devdocs/RNAseq_analysis/"
+root                  <- "C:/Users/David/Documents/RNAseq_analysis/"
 setwd(root)
 rDirectory            <- 'R/'
 myDirectoryR          <- paste0(root,rDirectory)

@@ -1,4 +1,4 @@
-#' @name outputResults
+#' @name outputResultsNOISeq
 #' @param data
 #' @param configFile
 #'
@@ -11,10 +11,10 @@
 #'
 
 
-outputResults <- function(data, data_noiseq, dataPCA, outputPathName,configFile, treatment){
+outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,configFile, treatment){
 
   dirOutput         <- paste0(configFile$output$outputDir,outputPathName)
-
+  
   graph             <- configFile$output$graph
 
   graphTypeExpr     <- configFile$output$graphType$expr
@@ -38,7 +38,7 @@ outputResults <- function(data, data_noiseq, dataPCA, outputPathName,configFile,
     dir.create(dirOutput)
 
   }
-
+  
   write.table(data, file=paste0(dirOutput,'/', configFile$output$outputName), sep=';')
 
   if (isTRUE(graph)){
@@ -87,4 +87,47 @@ outputResults <- function(data, data_noiseq, dataPCA, outputPathName,configFile,
   }
 
 
+}
+
+
+#' @name outputResultsNOISeq
+#' @param data
+#' @param configFile
+#'
+#' @import NOISeq
+#' @import dplyr
+#'
+#' @return myData
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
+
+
+
+outputResultsDESeq <- function(myData, data_noiseq, dataPCA, outputPathName,configFile, treatment){
+  
+  
+  if (!dir.exists(dirOutput)){
+    
+    dir.create(dirOutput)
+    
+  }else{
+    
+    unlink(dirOutput, recursive = TRUE)
+    
+    dir.create(dirOutput)
+    
+  }
+  write.table()
+  
+  create.dir(paste0(dirOutput,'/figures'))
+    
+  
+  ####-----------------------DESeq heatMap--------------------------------#####
+  
+  eval(parse(text = paste0('ProcessingDESeqHeatMap(myData',factors,',configFile, dirOutput)')))
+  
+  eval(parse(text = paste0('ProcessingDESeqPCA(myData',factors,',configFile, dirOutput)')))
+  
+  
 }

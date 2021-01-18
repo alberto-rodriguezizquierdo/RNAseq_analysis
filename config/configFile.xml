@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generalParameters>
-  <dataPath>C:/Users/Alberto/Documents/Beebliography/essay/</dataPath>
-  <samplesFactorFilename>C:/Users/Alberto/Documents/Beebliography/sampleFactors.csv</samplesFactorFilename>
+  <dataPath>C:/Users/David/Pictures/results_featureCounts/</dataPath>
+  <samplesFactorFilename>C:/Users/David/Pictures/sampleFactors/sampleFactors.csv</samplesFactorFilename>
 
   <analysis>
     <noiseq></noiseq>
@@ -11,7 +11,7 @@
   <bFactor_1>
     <name_samples_1>AS1B01,AS1B02,AS1B03</name_samples_1>
     <name_samples_2>AS1B13,AS1B14,AS1B15</name_samples_2>
-    <factor>strain</factor>
+    <factor>factor</factor>
   </bFactor_1>
 
   <bFactor_2>
@@ -34,7 +34,7 @@
 
 
   <geneLength>
-    <geneLengthDir>C:/Users/Alberto/Documents/Beebliography/</geneLengthDir>
+    <geneLengthDir>C:/Users/David/Pictures/geneLength/</geneLengthDir>
     <geneLengthFilename>geneLength.csv</geneLengthFilename>
     <geneLengthAnnotation>Vitis_vinifera_gene_annotation_on_V2_20_new.gtf</geneLengthAnnotation>
     <geneLengthExtAnnot>gtf</geneLengthExtAnnot>
@@ -54,6 +54,11 @@
     <q>0.95</q>
     <m></m>
   </degenesParam>
+  
+  <deseqProperties>
+    <poisson>TRUE</poisson>
+    
+  </deseqProperties>
 
 
   <output>
@@ -66,6 +71,6 @@
       <q>0.9</q>
     </graphType>
     <outputName>resultsNoiseq.csv</outputName>
-    <outputDir>C:/Users/Alberto/Documents/Beebliography/results/</outputDir>
+    <outputDir>C:/Users/David/Pictures/results/</outputDir>
   </output>
 </generalParameters>
