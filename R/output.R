@@ -104,8 +104,10 @@ outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,confi
 
 
 
-outputResultsDESeq <- function(myData, data_noiseq, dataPCA, outputPathName,configFile, treatment){
+outputResultsDESeq <- function(myData, outputPathName,configFile, treatment){
   
+  
+  dirOutput         <- paste0(configFile$output$outputDir,outputPathName)
   
   if (!dir.exists(dirOutput)){
     

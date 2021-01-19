@@ -75,11 +75,33 @@ ProcessingDESeqPCA <- function(myData, configFile, dirOutput){
   
   tiff(filename=paste0(dirOutput,'/figures/',outputPathName,'_PCA.tiff'),units="in", width=5, height=5, res=300)
   
-  ggplot2(mypca, aes(x = PC1, y = PC2color = configFile)) +
+  ggplot2(mypca, aes(x = PC1, y = PC2, color = configFile)) +
     geom_point(size=3)+
     xlab(paste0('PC1: ', percentVar[1], '% variance')) +
     ylab(paste0('PC2: ', percentVar[1], '% variance')) +
     coord_fixed()
   
   dev.off()
+}
+
+#' @name processingDeseq
+#' @param myData
+#' @param configFile
+#' @import DESeq2
+#' @import ggplot
+#'
+#' @return value_noiseqbio
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
+
+
+processingDeseq <- function(myData, configFile, sampleFactors){
+  browser()  
+  deseqProcessing <- DESeq(myData)
+  
+  deseqResults <- DESeq2::results(deseqProcessing, contrast = sampleFactors)
+  
+  return(deseqResults)
+  
 }

@@ -84,10 +84,23 @@ RNASeqAnalysisApp <- function(root){
 
       eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,', configFile, factors)')))
       
+      usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factor')))
       
+      factorsToDeseq <- eval(parse(text=paste0('unique(myFactors',factors,'$',usedFactor,')')))
       
+      factorsToDeseq <- append(usedFactor,factorsToDeseq)
       
+      eval(parse(text=paste0('deseqResults',factors,' <- processingDeseq(myData',factors,', configFile, factorsToDeseq)')))
       
+      if (eval(parse(text=paste0('(length(unique(myFactors',factor,')))==1')))){
+        
+        outputSpecimen <- eval(parse(text=paste0('unique(myfactors,',factors,')')))
+        
+        
+        
+      }
+      
+      eval(parse(text=paste0('outputResultsDESeq()')))
     }
   }
 

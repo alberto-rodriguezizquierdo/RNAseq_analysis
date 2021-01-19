@@ -124,7 +124,7 @@ ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
 
 
 ReadDeseqFactors <- function(countData,myFactor, configFile, factors){
-
+  browser()
   myFactor <- data.frame(myFactor)
   
   usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factor')))
