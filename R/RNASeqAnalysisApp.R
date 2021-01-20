@@ -91,14 +91,16 @@ RNASeqAnalysisApp <- function(root){
       factorsToDeseq <- append(usedFactor,factorsToDeseq)
       
       eval(parse(text=paste0('deseqResults',factors,' <- processingDeseq(myData',factors,', configFile, factorsToDeseq)')))
-      browser()
+      
       if (eval(parse(text=paste0('(length(unique(myFactors',factors,'$strain)))==1')))){
         
         outputSpecimen <- eval(parse(text=paste0('unique(myFactors',factors,'$strain)')))
         
       }else{
         
-        outputSpecimen <- eval(parse(text=paste0('paste(unique(myFactors',factors,'$strain), sep="_vs_")')))
+        specvalues <-eval(parse(text=paste0('unique(myFactors',factors,'$strain)')))
+        
+        outputSpecimen <- paste(specvalues[[1]],specvalues[[2]], sep = "_vs_")
         
       }
       if (eval(parse(text=paste0('(length(unique(myFactors',factors,'$factor)))==1')))){
@@ -118,7 +120,9 @@ RNASeqAnalysisApp <- function(root){
         
       }else{
         
-        outputtime <- eval(parse(text=paste0('paste(unique(myFactors',factors,'$time), sep="_vs_")')))
+        timevalues <-eval(parse(text=paste0('unique(myFactors',factors,'$time)')))
+        
+        outputtime <- paste(timevalues[[1]],timevalues[[2]], sep = "_vs_")
         
       }
       
@@ -128,8 +132,9 @@ RNASeqAnalysisApp <- function(root){
         
       }else{
         
-        outputtreatment <- eval(parse(text=paste0('paste(unique(myFactors',factors,'$treatment), sep="_vs_")')))
+        treatvalues <-eval(parse(text=paste0('unique(myFactors',factors,'$treatment)')))
         
+        outputtreatment <- paste(treatvalues[[1]],treatvalues[[2]], sep = "_vs_")
       }
       
       if (eval(parse(text=paste0('(length(unique(myFactors',factors,'$organ)))==1')))){
@@ -138,13 +143,15 @@ RNASeqAnalysisApp <- function(root){
         
       }else{
         
-        outputorgan <- eval(parse(text=paste0('paste(unique(myFactors',factors,'$organ), sep="_vs_")')))
+        organvalues <-eval(parse(text=paste0('unique(myFactors',factors,'$organ)')))
+        
+        outputorgan <- paste(organvalues[[1]],organvalues[[2]], sep = "_vs_")
         
       }
       
       outputPathName <- paste0(outputSpecimen,'_',outputfactor,'_',outputtime,'_',outputtreatment,'_',outputorgan)
       
-      eval(parse(text=paste0('outputResultsDESeq()')))
+      eval(parse(text=paste0('outputResultsDESeq(deseqResults',factors,',outputPathName,configFile,configFile$',factors,'$treatment, factors, myData',factors,')')))
     }
   }
 

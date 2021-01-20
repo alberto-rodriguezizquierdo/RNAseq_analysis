@@ -2,7 +2,7 @@
 
 rm(list=ls())
 
-libInstalling <- c('RColorBrewer','pheatmap','dplyr','NOISeq','DESeq2', 'XML', 'GenomicFeatures', 'BiocManager', 'NOISeq', 'tidyverse', 'PoiClaClu', 'ggplot2')
+libInstalling <- c('RColorBrewer','pheatmap','dplyr','NOISeq','DESeq2', 'XML', 'GenomicFeatures', 'BiocManager', 'tidyverse', 'PoiClaClu', 'ggplot2')
 
 is.installed <- function(paquete) is.element(paquete, installed.packages())
 

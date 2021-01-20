@@ -104,7 +104,7 @@ outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,confi
 
 
 
-outputResultsDESeq <- function(myData, outputPathName,configFile, treatment){
+outputResultsDESeq <- function(myResults, outputPathName,configFile, treatment, factors,myData){
   
   
   dirOutput         <- paste0(configFile$output$outputDir,outputPathName)
@@ -120,16 +120,16 @@ outputResultsDESeq <- function(myData, outputPathName,configFile, treatment){
     dir.create(dirOutput)
     
   }
-  write.table()
+  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputName), sep=';')
   
-  create.dir(paste0(dirOutput,'/figures'))
+  dir.create(paste0(dirOutput,'/figures'))
     
   
   ####-----------------------DESeq heatMap--------------------------------#####
   
-  eval(parse(text = paste0('ProcessingDESeqHeatMap(myData',factors,',configFile, dirOutput)')))
+  ProcessingDESeqHeatMap(myData,configFile, dirOutput, outputPathName)
   
-  eval(parse(text = paste0('ProcessingDESeqPCA(myData',factors,',configFile, dirOutput)')))
+  eval(parse(text=paste0('ProcessingDESeqPCA(myData,configFile$',factors,'$factor, dirOutput, outputPathName)')))
   
   
 }

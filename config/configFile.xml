@@ -17,7 +17,7 @@
   <bFactor_2>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B16,AS1B17,AS1B18</name_samples_2>
-    <factor>strain</factor>
+    <factor>time</factor>
   </bFactor_2>
 
   <bFactor_3>
@@ -70,7 +70,7 @@
       <PCA>TRUE</PCA>
       <q>0.9</q>
     </graphType>
-    <outputName>resultsNoiseq.csv</outputName>
+    <outputName>resultsdeseq2.csv</outputName>
     <outputDir>C:/Users/David/Pictures/results/</outputDir>
   </output>
 </generalParameters>
