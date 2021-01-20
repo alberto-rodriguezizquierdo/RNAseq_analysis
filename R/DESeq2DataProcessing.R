@@ -97,7 +97,7 @@ ProcessingDESeqPCA <- function(myData, configFile, dirOutput){
 
 
 processingDeseq <- function(myData, configFile, sampleFactors){
-  browser()  
+   
   deseqProcessing <- DESeq(myData)
   
   deseqResults <- DESeq2::results(deseqProcessing, contrast = sampleFactors)
