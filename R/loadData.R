@@ -51,7 +51,7 @@ loadData <- function(configFile){
 #'
 
 creatingCountsByFactorsNoiseq <- function(dataCounts,factor){
-
+  
   SelDataCounts <- dplyr::select(dataCounts,factor$sample)
 
 #  SelDataCounts <- cbind(gene_id=dataCounts$gene_id, SelDataCounts)
@@ -103,7 +103,7 @@ creatingCountsByFactorsDeseq <- function(dataCounts,factor){
 
 
 ReadNOISeqFactors <- function(myCounts, lengthGene, myFactor){
-
+  
   myData <- NOISeq::readData(data=myCounts, length = lengthGene, factors=myFactor)
 
   return(myData)
@@ -127,12 +127,38 @@ ReadDeseqFactors <- function(countData,myFactor, configFile, factors){
   
   myFactor <- data.frame(myFactor)
   
-  usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factor')))
-
+  usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factorDESeq')))
+  
   #rownames(colData) <- 1
-
-#  for(columnFactor in names(myFactor)){
-
+  
+  if (length(unique(usedFactor)) > 1){
+    
+    for(columnFactor in usedFactor){
+    
+      designParameters <- columnFactor
+      
+      designParameters <- paste(designParameters, columnFactor, sep=' + ')
+      
+      }      
+  
+    colData <- myFactor
+      
+    myData    <- eval(parse(text=paste0('DESeqDataSetFromMatrix(countData=countData, colData=colData, design= ~ ',designParameters,')')))
+      
+    myData <- myData[rowSums(counts(myData)) > 5, ]
+      
+  
+  }else{
+    
+    colData <- myFactor
+    
+    myData    <- eval(parse(text=paste0('DESeqDataSetFromMatrix(countData=countData, colData=colData, design= ~ ',usedFactor,')')))
+    
+    myData <- myData[rowSums(counts(myData)) > 5, ]
+  
+  }
+  
+    
 #    if (!columnFactor == 'batch'){
 #      if (!columnFactor == "sample"){
 
@@ -153,13 +179,6 @@ ReadDeseqFactors <- function(countData,myFactor, configFile, factors){
 #        }
 #      }
 #    }
-#  }
-
-  colData <- myFactor
-
-  myData    <- eval(parse(text=paste0('DESeqDataSetFromMatrix(countData=countData, colData=colData, design= ~ ',usedFactor,')')))
-  
-  myData <- myData[rowSums(counts(myData)) > 5, ]
   
   return(myData)
 }
@@ -176,7 +195,7 @@ ReadDeseqFactors <- function(countData,myFactor, configFile, factors){
 
 
 ReadNOISeqFactorsPCA <- function(myCounts, lengthGene, myFactor){
-
+ 
   myCounts2 <- myCounts
 
   myCounts2 <- myCounts2 + runif(nrow(myCounts2) * 4,3,5)

@@ -60,9 +60,13 @@ getConfigFile <- function(root){
 
     eval(parse(text=paste0('configFile$', factors,'$name_samples_2 <- validateNameSamples2')))
 
-    validateFactor <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$factor)')))
+    validateFactorNOISeq <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$factorNOISeq)')))
+    
+    eval(parse(text=paste0('configFile$', factors,'$factorNOISeq <- validateFactorNOISeq')))
+    
+    validateFactorDESeq <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$factorDESeq)')))
 
-    eval(parse(text=paste0('configFile$', factors,'$factor <- validateFactor')))
+    eval(parse(text=paste0('configFile$', factors,'$factorDESeq <- validateFactorDESeq')))
 
     }
 
@@ -158,13 +162,22 @@ getConfigFile <- function(root){
 
   configFile$output$graphType$q <- validateGraphq
 
-  validateOutputName  <- validateCharacter(configFile$output$outputName)
+  validateOutputNameNOISeq  <- validateCharacter(configFile$output$outputNameNOISeq)
 
-  configFile$output$outputName <- validateOutputName
+  configFile$output$outputNameNOISeq <- validateOutputNameNOISeq
 
-  validateOutputDir  <- validateCharacter(configFile$output$outputDir)
+  validateOutputDirNOISeq  <- validateCharacter(configFile$output$outputDirNOISeq)
 
-  configFile$output$outputDir <- validateOutputDir
+  configFile$output$outputDirNOISeq <- validateOutputDirNOISeq
+  
+  validateOutputNameDESeq  <- validateCharacter(configFile$output$outputNameDESeq)
+  
+  configFile$output$outputNameDESeq <- validateOutputNameDESeq
+  
+  validateOutputDirDESeq  <- validateCharacter(configFile$output$outputDirDESeq)
+  
+  configFile$output$outputDirDESeq <- validateOutputDirDESeq
+  
 
   return (configFile)
 }
@@ -235,7 +248,7 @@ nodesValidation <- function(configFile){
 
   degenesParamNodes           <- c('q','m')
 
-  outputNodes                 <- c('graph','graphType','outputName','outputDir')
+  outputNodes                 <- c('graph','graphType','outputNameDESeq','outputNameNOISeq','outputDirNOISeq','outputDirDESeq')
 
   graphNodes                  <- c('expr','MD', 'biotypes', 'PCA','q')
   
@@ -272,12 +285,21 @@ nodesValidation <- function(configFile){
 
     nameFactor2 <- strsplit(eval(parse(text=paste0('configFile$',factors, '$name_samples_2'))),',')
     factor$name_samples_2 <- nameFactor2
+    
+    if (grepl(',', factor$factorDESeq)){
+      
+      nameFactorFactor <- strsplit(eval(parse(text=paste0('configFile$',factors, '$factorDESeq'))),',')
+      factor$factorDESeq <- nameFactorFactor  
+      
+      eval(parse(text=paste0('configFile$',factors,'$factorDESeq <- ', factor$factorDESeq)))
+      
+    }
 
     ##----------------------------Splitting by ','-------------------------##
     eval(parse(text=paste0('configFile$',factors,'$name_samples_1 <- ',factor$name_samples_1)))
 
     eval(parse(text=paste0('configFile$',factors,'$name_samples_2 <- ',factor$name_samples_2)))
-
+    
     ##------------------------------Validate nodes--------------------------##
 
     bFactorsLevels1     <- eval(parse(text=paste0('configFile$',factors,'$name_samples_1')))

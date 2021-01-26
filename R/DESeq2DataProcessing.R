@@ -64,7 +64,7 @@ ProcessingDESeqHeatMap <- function(myData, configFile, dirOutput, outputPathName
 #'
 
 ProcessingDESeqPCA <- function(myData, configFile, dirOutput, outputPathName){
-  browser()
+  
   
   vsd <- vst(myData, blind = TRUE)
   

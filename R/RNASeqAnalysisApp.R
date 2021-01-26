@@ -70,10 +70,14 @@ RNASeqAnalysisApp <- function(root){
 #      eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg <- calculateDEGenes(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',configFile)')))
 
       ##----------------------------Output Results----------------------------##
+      
+      outputPathName <- eval(parse(text=paste0('outputPathNameBuild(myFactors',factors,',factors)')))
+      
+      eval(parse(text=paste0('resProcessingNOISeq <- ProcessingNOISeqbio(myData',factors,',factors,myFactors',factors,',configFile)')))
+      
+      resProcessingNOISeqDEG <- calculateDEGenes(resProcessingNOISeq,configFile)
 
-      outputPathName <- paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison)
-
-      eval(parse(text=paste0('outputResults(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg,',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',myData',factors,'_2, outputPathName, configFile, configFile$',factors,'$treatment)')))
+      eval(parse(text=paste0('outputResultsNOISeq(resProcessingNOISeqDEG,resProcessingNOISeq,myData',factors,'_2, outputPathName, configFile, configFile$',factors,'$treatment)')))
 
 
     }
@@ -84,7 +88,7 @@ RNASeqAnalysisApp <- function(root){
 
       eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,', configFile, factors)')))
       
-      usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factor')))
+      usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factorDESeq')))
       
       factorsToDeseq <- eval(parse(text=paste0('unique(myFactors',factors,'$',usedFactor,')')))
       
@@ -92,64 +96,7 @@ RNASeqAnalysisApp <- function(root){
       
       eval(parse(text=paste0('deseqResults',factors,' <- processingDeseq(myData',factors,', configFile, factorsToDeseq)')))
       
-      if (eval(parse(text=paste0('(length(unique(myFactors',factors,'$strain)))==1')))){
-        
-        outputSpecimen <- eval(parse(text=paste0('unique(myFactors',factors,'$strain)')))
-        
-      }else{
-        
-        specvalues <-eval(parse(text=paste0('unique(myFactors',factors,'$strain)')))
-        
-        outputSpecimen <- paste(specvalues[[1]],specvalues[[2]], sep = "_vs_")
-        
-      }
-      if (eval(parse(text=paste0('(length(unique(myFactors',factors,'$factor)))==1')))){
-        
-        outputfactor <- eval(parse(text=paste0('unique(myFactors',factors,'$factor)')))
-        
-      }else{
-        
-        factorvalues <- eval(parse(text=paste0('unique(myFactors',factors,'$factor)')))
-        
-        outputfactor <- paste(factorvalues[[1]],factorvalues[[2]], sep = "_vs_")
-        
-      }
-      if (eval(parse(text=paste0('(length(unique(myFactors',factors,'$time)))==1')))){
-        
-        outputtime <- eval(parse(text=paste0('unique(myFactors',factors,'$time)')))
-        
-      }else{
-        
-        timevalues <-eval(parse(text=paste0('unique(myFactors',factors,'$time)')))
-        
-        outputtime <- paste(timevalues[[1]],timevalues[[2]], sep = "_vs_")
-        
-      }
-      
-      if (eval(parse(text=paste0('(length(unique(myFactors',factors,'$treatment)))==1')))){
-        
-        outputtreatment <- eval(parse(text=paste0('unique(myFactors',factors,'$treatment)')))
-        
-      }else{
-        
-        treatvalues <-eval(parse(text=paste0('unique(myFactors',factors,'$treatment)')))
-        
-        outputtreatment <- paste(treatvalues[[1]],treatvalues[[2]], sep = "_vs_")
-      }
-      
-      if (eval(parse(text=paste0('(length(unique(myFactors',factors,'$organ)))==1')))){
-        
-        outputorgan <- eval(parse(text=paste0('unique(myFactors',factors,'$organ)')))
-        
-      }else{
-        
-        organvalues <-eval(parse(text=paste0('unique(myFactors',factors,'$organ)')))
-        
-        outputorgan <- paste(organvalues[[1]],organvalues[[2]], sep = "_vs_")
-        
-      }
-      
-      outputPathName <- paste0(outputSpecimen,'_',outputfactor,'_',outputtime,'_',outputtreatment,'_',outputorgan)
+      outputPathName <- eval(parse(text=paste0('outputPathNameBuild(myFactors',factors,')')))
       
       eval(parse(text=paste0('outputResultsDESeq(deseqResults',factors,',outputPathName,configFile,configFile$',factors,'$treatment, factors, myData',factors,')')))
     }

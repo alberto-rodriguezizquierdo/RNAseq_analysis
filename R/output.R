@@ -12,8 +12,8 @@
 
 
 outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,configFile, treatment){
-
-  dirOutput         <- paste0(configFile$output$outputDir,outputPathName)
+  browser()
+  dirOutput         <- paste0(configFile$output$outputDirNOISeq,outputPathName)
   
   graph             <- configFile$output$graph
 
@@ -39,7 +39,7 @@ outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,confi
 
   }
   
-  write.table(data, file=paste0(dirOutput,'/', configFile$output$outputName), sep=';')
+  write.table(data, file=paste0(dirOutput,'/', configFile$output$outputNameNOISeq), sep=';')
 
   if (isTRUE(graph)){
 
@@ -107,7 +107,7 @@ outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,confi
 outputResultsDESeq <- function(myResults, outputPathName,configFile, treatment, factors,myData){
   
   
-  dirOutput         <- paste0(configFile$output$outputDir,outputPathName)
+  dirOutput         <- paste0(configFile$output$outputDirDESeq,outputPathName)
   
   if (!dir.exists(dirOutput)){
     
@@ -120,7 +120,7 @@ outputResultsDESeq <- function(myResults, outputPathName,configFile, treatment, 
     dir.create(dirOutput)
     
   }
-  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputName), sep=';')
+  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameDESeq), sep=';')
   
   dir.create(paste0(dirOutput,'/figures'))
     
@@ -129,7 +129,85 @@ outputResultsDESeq <- function(myResults, outputPathName,configFile, treatment, 
   
   ProcessingDESeqHeatMap(myData,configFile, dirOutput, outputPathName)
   
-  eval(parse(text=paste0('ProcessingDESeqPCA(myData,configFile$',factors,'$factor, dirOutput, outputPathName)')))
+  #eval(parse(text=paste0('ProcessingDESeqPCA(myData,configFile$',factors,'$factor, dirOutput, outputPathName)')))
   
+  
+}
+
+
+#' @name outputPathNameBuild
+#' @param myfactor
+#'
+#' @import NOISeq
+#' @import dplyr
+#'
+#' @return outputPathName
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
+
+
+outputPathNameBuild <- function(myFactors,factors){
+  
+  if (length(unique(myFactors$strain))==1){
+    
+    outputSpecimen <- unique(myFactors$strain)
+    
+  }else{
+    
+    specvalues <-unique(myFactors$strain)
+    
+    outputSpecimen <- paste(specvalues[[1]],specvalues[[2]], sep = "_vs_")
+    
+  }
+  if (length(unique(myFactors$factor))==1){
+    
+    outputfactor <- unique(myFactors$factor)
+    
+  }else{
+    
+    factorvalues <- unique(myFactors$factor)
+    
+    outputfactor <- paste(factorvalues[[1]],factorvalues[[2]], sep = "_vs_")
+    
+  }
+  if (length(unique(myFactors$time))==1){
+    
+    outputtime <- unique(myFactors$time)
+    
+  }else{
+    
+    timevalues <-unique(myFactors$time)
+    
+    outputtime <- paste(timevalues[[1]],timevalues[[2]], sep = "_vs_")
+    
+  }
+  
+  if (length(unique(myFactors$treatment))==1){
+    
+    outputtreatment <- unique(myFactors$treatment)
+    
+  }else{
+    
+    treatvalues <-unique(myFactors$treatment)
+    
+    outputtreatment <- paste(treatvalues[[1]],treatvalues[[2]], sep = "_vs_")
+  }
+  
+  if (length(unique(myFactors$organ))==1){
+    
+    outputorgan <- unique(myFactors$organ)
+    
+  }else{
+    
+    organvalues <-unique(myFactors$organ)
+    
+    outputorgan <- paste(organvalues[[1]],organvalues[[2]], sep = "_vs_")
+    
+  }
+  
+  outputPathName <- paste0(outputSpecimen,'_',outputfactor,'_',outputtime,'_',outputtreatment,'_',outputorgan)
+  
+  return(outputPathName)
   
 }
