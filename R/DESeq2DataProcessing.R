@@ -96,7 +96,22 @@ ProcessingDESeqPCA <- function(myData, configFile, dirOutput, outputPathName){
 
 
 processingDeseq <- function(myData, configFile, sampleFactors){
-   
+  
+  if(length(unique(sampleFactors))>1){
+    
+    for(columnFactor in sampleFactors){
+      
+      designParameters <- columnFactor
+      
+      designParameters <- paste(designParameters, columnFactor, sep=' + ')
+      
+    }  
+  
+    deseqProcessing <- DESeq(myData)
+    
+    deseqResults <- DESeq2::results(deseqProcessing)
+    
+  } 
   deseqProcessing <- DESeq(myData)
   
   deseqResults <- DESeq2::results(deseqProcessing, contrast = sampleFactors)

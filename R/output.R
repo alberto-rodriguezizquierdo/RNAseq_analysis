@@ -12,7 +12,7 @@
 
 
 outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,configFile, treatment){
-  browser()
+  
   dirOutput         <- paste0(configFile$output$outputDirNOISeq,outputPathName)
   
   graph             <- configFile$output$graph
@@ -104,7 +104,7 @@ outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,confi
 
 
 
-outputResultsDESeq <- function(myResults, outputPathName,configFile, treatment, factors,myData){
+outputResultsDESeq <- function(myResults, outputPathName,configFile, factors,myData){
   
   
   dirOutput         <- paste0(configFile$output$outputDirDESeq,outputPathName)
@@ -171,15 +171,15 @@ outputPathNameBuild <- function(myFactors,factors){
     outputfactor <- paste(factorvalues[[1]],factorvalues[[2]], sep = "_vs_")
     
   }
-  if (length(unique(myFactors$time))==1){
+  if (length(unique(myFactors$days))==1){
     
-    outputtime <- unique(myFactors$time)
+    outputdays <- unique(myFactors$days)
     
   }else{
     
-    timevalues <-unique(myFactors$time)
+    daysvalues <-unique(myFactors$days)
     
-    outputtime <- paste(timevalues[[1]],timevalues[[2]], sep = "_vs_")
+    outputdays <- paste(daysvalues[[1]],daysvalues[[2]], sep = "_vs_")
     
   }
   
@@ -206,7 +206,19 @@ outputPathNameBuild <- function(myFactors,factors){
     
   }
   
-  outputPathName <- paste0(outputSpecimen,'_',outputfactor,'_',outputtime,'_',outputtreatment,'_',outputorgan)
+  if (length(unique(myFactors$typeTreatment))==1){
+    
+    outputtypeTreatment <- unique(myFactors$typeTreatment)
+    
+  }else{
+    
+    typeTreatmentvalues <-unique(myFactors$typeTreatment)
+    
+    outputtypeTreatment <- paste(typeTreatmentvalues[[1]],typeTreatmentvalues[[2]], sep = "_vs_")
+    
+  }
+  
+  outputPathName <- paste0(outputSpecimen,'_',outputfactor,'_',outputdays,'_',outputtreatment,'_',outputorgan,'_',outputtypeTreatment,'_', factors)
   
   return(outputPathName)
   

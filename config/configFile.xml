@@ -11,44 +11,128 @@
   <bFactor_1>
     <name_samples_1>AS1B01,AS1B02,AS1B03</name_samples_1>
     <name_samples_2>AS1B13,AS1B14,AS1B15</name_samples_2>
-    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorNOISeq>factor</factorNOISeq>
     <factorDESeq>factor</factorDESeq>
   </bFactor_1>
 
   <bFactor_2>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B16,AS1B17,AS1B18</name_samples_2>
-    <factorNOISeq>time</factorNOISeq>
-    <factorDESeq>factor,time</factorDESeq>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
   </bFactor_2>
 
   <bFactor_3>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B19,AS1B20,AS1B21</name_samples_2>
-    <factorNOISeq>time</factorNOISeq>
-    <factorDESeq>factor,time</factorDESeq>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
   </bFactor_3>
 
   <bFactor_4>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B22,AS1B23,AS1B24</name_samples_2>
-    <factorNOISeq>factor</factorNOISeq>
-    <factorDESeq>factor,time</factorDESeq>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
   </bFactor_4>
 
   <bFactor_5>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B25,AS1B26,AS1B27</name_samples_2>
-    <factorNOISeq>factor</factorNOISeq>
-    <factorDESeq>factor,time</factorDESeq>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
   </bFactor_5>
   
   <bFactor_6>
     <name_samples_1>AS1B13,AS1B14,AS1B15</name_samples_1>
     <name_samples_2>AS1B28,AS1B29,AS1B30</name_samples_2>
-    <factorNOISeq>factor</factorNOISeq>
-    <factorDESeq>factor,time</factorDESeq>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
   </bFactor_6>
+  
+    <bFactor_7>
+    <name_samples_1>R11001,R11002,R11003</name_samples_1>
+    <name_samples_2>R11013,R11014,R11015</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_7>
+
+  <bFactor_8>
+    <name_samples_1>R11013,R11014,R11015</name_samples_1>
+    <name_samples_2>R11016,R11017,R11018</name_samples_2>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
+  </bFactor_8>
+
+  <bFactor_9>
+    <name_samples_1>R11013,R11014,R11015</name_samples_1>
+    <name_samples_2>R11019,R11020,R11021</name_samples_2>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
+  </bFactor_9>
+
+  <bFactor_10>
+    <name_samples_1>R11013,R11014,R11015</name_samples_1>
+    <name_samples_2>R11022,R11023,R11024</name_samples_2>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
+  </bFactor_10>
+
+  <bFactor_11>
+    <name_samples_1>R11013,R11014,R11015</name_samples_1>
+    <name_samples_2>R11025,R11026,R11027</name_samples_2>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
+  </bFactor_11>
+  
+  <bFactor_12>
+    <name_samples_1>R11013,R11014,R11015</name_samples_1>
+    <name_samples_2>R11028,R11029,R11030</name_samples_2>
+    <factorNOISeq>typeTreatment</factorNOISeq>
+    <factorDESeq>typeTreatment</factorDESeq>
+  </bFactor_12>
+  
+    <bFactor_13>
+    <name_samples_1>AS1B01,AS1B02,AS1B03</name_samples_1>
+    <name_samples_2>AS1B04,AS1B05,AS1B06</name_samples_2>
+    <factorNOISeq>days</factorNOISeq>
+    <factorDESeq>days</factorDESeq>
+  </bFactor_13>
+  
+    <bFactor_14>
+    <name_samples_1>AS1B01,AS1B02,AS1B03</name_samples_1>
+    <name_samples_2>AS1B07,AS1B08,AS1B09</name_samples_2>
+    <factorNOISeq>days</factorNOISeq>
+    <factorDESeq>days</factorDESeq>
+  </bFactor_14>
+
+  <bFactor_15>
+    <name_samples_1>AS1B01,AS1B02,AS1B03</name_samples_1>
+    <name_samples_2>AS1B10,AS1B11,AS1B12</name_samples_2>
+    <factorNOISeq>days</factorNOISeq>
+    <factorDESeq>days</factorDESeq>
+  </bFactor_15>
+
+  <bFactor_16>
+    <name_samples_1>R11001,R11002,R11003</name_samples_1>
+    <name_samples_2>R11004,R11005,R11006</name_samples_2>
+    <factorNOISeq>days</factorNOISeq>
+    <factorDESeq>days</factorDESeq>
+  </bFactor_16>
+
+  <bFactor_17>
+    <name_samples_1>R11001,R11002,R11003</name_samples_1>
+    <name_samples_2>R11007,R11008,R11009</name_samples_2>
+    <factorNOISeq>days</factorNOISeq>
+    <factorDESeq>days</factorDESeq>
+  </bFactor_17>
+  
+  <bFactor_18>
+    <name_samples_1>R11001,R11002,R11003</name_samples_1>
+    <name_samples_2>R11010,R11011,R11012</name_samples_2>
+    <factorNOISeq>days</factorNOISeq>
+    <factorDESeq>days</factorDESeq>
+  </bFactor_18>
   
 
 

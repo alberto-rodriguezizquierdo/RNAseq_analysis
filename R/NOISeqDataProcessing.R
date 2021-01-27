@@ -14,14 +14,14 @@
 
 
 ProcessingNOISeqbio <- function(data,factor_nb,factor, configFile){
-  browser()
+  
   #-----------------specifying variables-------------------#
   nclust_val        <- configFile$condAnalysisNOISeqbio$nclust
   k_val             <- configFile$condAnalysisNOISeqbio$k
   norm_val          <- configFile$condAnalysisNOISeqbio$norm
   factor_val        <- eval(parse(text=paste0('configFile$',factor_nb,'$factorNOISeq')))
   
-  conditions_val    <- unique(factor$factorNOISeq)
+  conditions_val    <- eval(parse(text=paste0('unique(factor$',factor_val,')')))
   
 #  conditions_val    <- eval(parse(text=paste0('c(configFile$',factor_nb,'$samples_1$factor_1,configFile$',factor_nb,'$samples_2$factor_2)')))
   filter_val        <- configFile$condAnalysisNOISeqbio$filter

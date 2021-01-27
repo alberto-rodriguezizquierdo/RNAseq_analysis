@@ -88,17 +88,21 @@ RNASeqAnalysisApp <- function(root){
 
       eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,', configFile, factors)')))
       
-      usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factorDESeq')))
-      
-      factorsToDeseq <- eval(parse(text=paste0('unique(myFactors',factors,'$',usedFactor,')')))
-      
-      factorsToDeseq <- append(usedFactor,factorsToDeseq)
-      
-      eval(parse(text=paste0('deseqResults',factors,' <- processingDeseq(myData',factors,', configFile, factorsToDeseq)')))
-      
-      outputPathName <- eval(parse(text=paste0('outputPathNameBuild(myFactors',factors,')')))
-      
-      eval(parse(text=paste0('outputResultsDESeq(deseqResults',factors,',outputPathName,configFile,configFile$',factors,'$treatment, factors, myData',factors,')')))
+      for(usedFactor in eval(parse(text=paste0('configFile$',factors,'$factorDESeq')))){
+        
+        #usedFactor <- eval(parse(text= paste0('configFile$', factors,'$factorDESeq')))
+          
+        factorsToDeseq <- eval(parse(text=paste0('unique(myFactors',factors,'$',usedFactor,')')))
+          
+        factorsToDeseq <- append(usedFactor,factorsToDeseq)
+        browser()  
+        eval(parse(text=paste0('deseqResults',factors,' <- processingDeseq(myData',factors,', configFile, factorsToDeseq)')))
+          
+        outputPathName <- eval(parse(text=paste0('outputPathNameBuild(myFactors',factors,',usedFactor)')))
+          
+        eval(parse(text=paste0('outputResultsDESeq(deseqResults',factors,',outputPathName,configFile, factors, myData',factors,')')))
+          
+      }
     }
   }
 

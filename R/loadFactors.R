@@ -10,7 +10,7 @@
 
 
 readFactor <- function(configFile){
-  browser()
+  
   factors <- read.csv(configFile$samplesFactorFilename, sep=';')
 
   return(factors)
