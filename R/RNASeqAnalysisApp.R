@@ -95,7 +95,7 @@ RNASeqAnalysisApp <- function(root){
         factorsToDeseq <- eval(parse(text=paste0('unique(myFactors',factors,'$',usedFactor,')')))
           
         factorsToDeseq <- append(usedFactor,factorsToDeseq)
-        browser()  
+          
         eval(parse(text=paste0('deseqResults',factors,' <- processingDeseq(myData',factors,', configFile, factorsToDeseq)')))
           
         outputPathName <- eval(parse(text=paste0('outputPathNameBuild(myFactors',factors,',usedFactor)')))
