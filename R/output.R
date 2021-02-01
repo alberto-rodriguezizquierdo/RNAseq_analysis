@@ -39,7 +39,7 @@ outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,confi
 
   }
   
-  write.table(data, file=paste0(dirOutput,'/', configFile$output$outputNameNOISeq), sep=';')
+  write.table(data, file=paste0(dirOutput,'/', configFile$output$outputNameNOISeq), sep=';', dec=',')
 
   if (isTRUE(graph)){
 
@@ -120,7 +120,7 @@ outputResultsDESeq <- function(myResults, outputPathName,configFile, factors,myD
     dir.create(dirOutput)
     
   }
-  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameDESeq), sep=';')
+  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameDESeq), sep=';', dec=',')
   
   dir.create(paste0(dirOutput,'/figures'))
     
