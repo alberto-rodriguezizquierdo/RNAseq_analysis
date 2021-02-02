@@ -53,6 +53,8 @@ loadData <- function(configFile){
 creatingCountsByFactorsNoiseq <- function(dataCounts,factor){
   
   SelDataCounts <- dplyr::select(dataCounts,factor$sample)
+  
+  row.names(SelDataCounts) <- dataCounts$gene_id
 
 #  SelDataCounts <- cbind(gene_id=dataCounts$gene_id, SelDataCounts)
 

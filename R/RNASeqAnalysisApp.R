@@ -49,11 +49,11 @@ RNASeqAnalysisApp <- function(root){
 
       ##---------------------Loading data from Factors------------------------##
 
-      eval(parse(text=paste0('myCounts', factors,' <- creatingCountsByFactorsNoiseq(dataCounts,myFactors',factors,')')))
+      eval(parse(text=paste0('myCounts', factors,'noiseq <- creatingCountsByFactorsNoiseq(dataCounts,myFactors',factors,')')))
 
-      eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,',geneLength,myFactors',factors,')')))
+      eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,'noiseq,geneLength,myFactors',factors,')')))
 
-      eval(parse(text=paste0('myData',factors,'_2 <- ReadNOISeqFactorsPCA(myCounts',factors,',geneLength,myFactors',factors,')')))
+      eval(parse(text=paste0('myData',factors,'_2 <- ReadNOISeqFactorsPCA(myCounts',factors,'noiseq,geneLength,myFactors',factors,')')))
 
       ##--------------Define variables to put into the analysis---------------##
 
@@ -84,9 +84,9 @@ RNASeqAnalysisApp <- function(root){
 
     if (isTRUE(configFile$analysis$deseq)){
 
-      eval(parse(text=paste0('myCounts', factors,' <- creatingCountsByFactorsDeseq(dataCounts,myFactors',factors,')')))
+      eval(parse(text=paste0('myCounts', factors,'deseq <- creatingCountsByFactorsDeseq(dataCounts,myFactors',factors,')')))
 
-      eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,',myFactors',factors,', configFile, factors)')))
+      eval(parse(text=paste0('myData', factors,' <- ReadDeseqFactors(myCounts',factors,'deseq,myFactors',factors,', configFile, factors)')))
       
       for(usedFactor in eval(parse(text=paste0('configFile$',factors,'$factorDESeq')))){
         
@@ -104,6 +104,9 @@ RNASeqAnalysisApp <- function(root){
           
       }
     }
+    eval(parse(text=paste0('union_data_analysis <- coincidences(resProcessingNOISeqDEG,deseqResults',factors,', myCounts',factors,'noiseq, configFile)')))
+    
+    eval(parse(text=paste0('outputCoincidences(union_data_analysis, outputPathName, configFile)')))
   }
 
   print('App finished successfully!')

@@ -39,7 +39,7 @@ outputResultsNOISeq <- function(data, data_noiseq, dataPCA, outputPathName,confi
 
   }
   
-  write.table(data, file=paste0(dirOutput,'/', configFile$output$outputNameNOISeq), sep=';', dec=',')
+  write.table(data, file=paste0(dirOutput,'/', configFile$output$outputNameNOISeq), sep=';')
 
   if (isTRUE(graph)){
 
@@ -120,7 +120,7 @@ outputResultsDESeq <- function(myResults, outputPathName,configFile, factors,myD
     dir.create(dirOutput)
     
   }
-  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameDESeq), sep=';', dec=',')
+  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameDESeq), sep=';')
   
   dir.create(paste0(dirOutput,'/figures'))
     
@@ -221,5 +221,39 @@ outputPathNameBuild <- function(myFactors,factors){
   outputPathName <- paste0(outputSpecimen,'_',outputfactor,'_',outputdays,'_',outputtreatment,'_',outputorgan,'_',outputtypeTreatment,'_', factors)
   
   return(outputPathName)
+  
+}
+
+
+#' @name outputCoincidences
+#' @param data
+#' @param configFile
+#'
+#' @import NOISeq
+#' @import dplyr
+#'
+#' @return outputPathName
+#'
+#' @author Alberto Rodriguez-Izquierdo, 2021
+#'
+
+
+outputCoincidences <- function(myResults, outputPathName,configFile){
+  
+  dirOutput         <- paste0(configFile$output$outputDirCoincidences,outputPathName)
+  
+  if (!dir.exists(dirOutput)){
+    
+    dir.create(dirOutput)
+    
+  }else{
+    
+    unlink(dirOutput, recursive = TRUE)
+    
+    dir.create(dirOutput)
+    
+  }
+  
+  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences), sep=';', row.names = FALSE)
   
 }

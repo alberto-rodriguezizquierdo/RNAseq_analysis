@@ -136,6 +136,14 @@ getConfigFile <- function(root){
   
   configFile$deseqProperties$poisson <- validatedeseqPoisson
 
+  
+####--------------------ValidateCoincidences-----------------------####
+  
+  validateCoincidencesFileName <- validateCharacter(configFile$coincidences$coincidencesFileName)
+  
+  configFile$coincidences$coincidencesFileName <- validateCoincidencesFileName
+  
+  
 ####-------------------Validate Output------------------------####
 
   validateGraph <- validateCharacter(configFile$output$graph)
@@ -178,7 +186,14 @@ getConfigFile <- function(root){
   
   configFile$output$outputDirDESeq <- validateOutputDirDESeq
   
-
+  validateOutputDirCoincidences  <- validateCharacter(configFile$output$outputDirCoincidences)
+  
+  configFile$output$outputDirCoincidences <- validateOutputDirCoincidences
+  
+  validateOutputNameCoincidences  <- validateCharacter(configFile$output$outputNameCoincidences)
+  
+  configFile$output$outputNameCoincidences <- validateOutputNameCoincidences
+  
   return (configFile)
 }
 
@@ -248,11 +263,20 @@ nodesValidation <- function(configFile){
 
   degenesParamNodes           <- c('q','m')
 
-  outputNodes                 <- c('graph','graphType','outputNameDESeq','outputNameNOISeq','outputDirNOISeq','outputDirDESeq')
+  outputNodes                 <- c('graph',
+                                   'graphType',
+                                   'outputNameDESeq',
+                                   'outputNameNOISeq',
+                                   'outputDirNOISeq',
+                                   'outputDirDESeq',
+                                   'outputDirCoincidences',
+                                   'outputNameCoincidences')
 
   graphNodes                  <- c('expr','MD', 'biotypes', 'PCA','q')
   
   deseqPropertiesNodes        <- c('poisson')
+  
+  coincidencesNodes           <- c('coincidencesFileName')
 
   #Validation principal nodes
 
@@ -274,6 +298,8 @@ nodesValidation <- function(configFile){
 
   ValGraphNodes                 <- validateConfigNodes(graphNodes, configFile$output$graphType)
 
+  ValCoincidencesNodes                <- validateConfigNodes(coincidencesNodes, configFile$coincidences)
+  
   #Validation secondary nodes
 
   for (factors in names(bFactors)){

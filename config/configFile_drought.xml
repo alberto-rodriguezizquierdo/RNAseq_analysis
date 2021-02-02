@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generalParameters>
-  <dataPath>C:/Users/David/Documents/results_drought_featureCounts/count_without_crop/</dataPath>
-  <samplesFactorFilename>C:/Users/David/Pictures/sampleFactors/sampleFactors_db.csv</samplesFactorFilename>
+  <dataPath>C:/Users/David/Pictures/results_featureCounts/</dataPath>
+  <samplesFactorFilename>C:/Users/David/Pictures/sampleFactors/sampleFactors.csv</samplesFactorFilename>
 
   <analysis>
     <noiseq>TRUE</noiseq>
@@ -29,12 +29,18 @@
     <factorDESeq>factor</factorDESeq>
   </bFactor_3>
 
+  <bFactor_4>
+    <name_samples_1>SVP_G_C_C1_H1,SVP_G_C_C1_H2,SVP_G_C_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_C_C2_H1,SVP_G_C_C2_H2,SVP_G_C_C2_H3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_4>
 
   <bFactor_5>
-    <name_samples_1>SVP_G_C_C1_H1,SVP_G_C_C1_H2,SVP_G_C_C1_H3</name_samples_1>
-    <name_samples_2>SVP_G_C_C3_H1,SVP_G_C_C3_H2,SVP_G_C_C3_H3</name_samples_2>
-    <factorNOISeq>days</factorNOISeq>
-    <factorDESeq>days</factorDESeq>
+    <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_M_C3_H1,SVP_G_M_C3_H2,SVP_G_M_C3_H3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
   </bFactor_5>
 
   <bFactor_6>
@@ -50,19 +56,26 @@
     <factorNOISeq>factor</factorNOISeq>
     <factorDESeq>factor</factorDESeq>
   </bFactor_7>
-  
-    <bFactor_9>
+
+  <bFactor_8>
+    <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_M_EX_H1,SVP_G_M_EX_H2,SVP_G_M_EX_H3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_8>
+
+  <bFactor_9>
     <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
     <name_samples_2>SVP_G_M_C2_H1,SVP_G_M_C2_H2,SVP_G_M_C2_H3</name_samples_2>
-    <factorNOISeq>days</factorNOISeq>
-    <factorDESeq>days</factorDESeq>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
   </bFactor_9>
 
   <bFactor_10>
     <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
     <name_samples_2>SVP_G_M_C3_H1,SVP_G_M_C3_H2,SVP_G_M_C3_H3</name_samples_2>
-    <factorNOISeq>days</factorNOISeq>
-    <factorDESeq>days</factorDESeq>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
   </bFactor_10>
 
 
@@ -80,14 +93,26 @@
     <factorDESeq>factor</factorDESeq>
   </bFactor_12>
 
+  <bFactor_13>
+    <name_samples_1>SVP_G_C_C1_R1,SVP_G_C_C1_R2,SVP_G_C_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_C_EX_R1,SVP_G_C_EX_R2,SVP_G_C_EX_R3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_13>
 
   <bFactor_14>
     <name_samples_1>SVP_G_C_C1_R1,SVP_G_C_C1_R2,SVP_G_C_C1_R3</name_samples_1>
     <name_samples_2>SVP_G_C_C2_R1,SVP_G_C_C2_R2,SVP_G_C_C2_R3</name_samples_2>
-    <factorNOISeq>days</factorNOISeq>
-    <factorDESeq>days</factorDESeq>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
   </bFactor_14>
 
+  <bFactor_15>
+    <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_M_C3_R1,SVP_G_M_C3_R2,SVP_G_M_C3_R3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_15>
 
   <bFactor_16>
     <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
@@ -113,23 +138,16 @@
   <bFactor_19>
     <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
     <name_samples_2>SVP_G_M_C2_R1,SVP_G_M_C2_R2,SVP_G_M_C2_R3</name_samples_2>
-    <factorNOISeq>days</factorNOISeq>
-    <factorDESeq>days</factorDESeq>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
   </bFactor_19>
 
   <bFactor_20>
     <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
     <name_samples_2>SVP_G_M_C3_R1,SVP_G_M_C3_R2,SVP_G_M_C3_R3</name_samples_2>
-    <factorNOISeq>days</factorNOISeq>
-    <factorDESeq>days</factorDESeq>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
   </bFactor_20>
-  
-  <bFactor_21>
-    <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
-    <name_samples_2>SVP_G_C_C1_R1,SVP_G_C_C1_R2,SVP_G_C_C1_R3</name_samples_2>
-    <factorNOISeq>strain</factorNOISeq>
-    <factorDESeq>strain</factorDESeq>
-  </bFactor_21>
 
 
   <geneLength>
@@ -158,11 +176,7 @@
     <poisson>TRUE</poisson>
     
   </deseqProperties>
-  
-  <coincidences>
-    <coincidencesFileName>C:/Users/David/Pictures/sampleFactors/list_genes_vitis_correspondencesV3_1.csv</coincidencesFileName>
-    
-  </coincidences>
+
 
   <output>
     <graph>TRUE</graph>
@@ -177,7 +191,5 @@
     <outputDirDESeq>C:/Users/David/Pictures/resultsDESeq/</outputDirDESeq>
     <outputNameNOISeq>resultsnoiseq.csv</outputNameNOISeq>
     <outputNameDESeq>resultsdeseq2.csv</outputNameDESeq>
-    <outputDirCoincidences>C:/Users/David/Pictures/resultsCoincidences/</outputDirCoincidences>
-    <outputNameCoincidences>resultsCoincidences.csv</outputNameCoincidences>
   </output>
 </generalParameters>

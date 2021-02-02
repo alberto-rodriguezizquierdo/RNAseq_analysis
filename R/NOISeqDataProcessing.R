@@ -37,7 +37,7 @@ ProcessingNOISeqbio <- function(data,factor_nb,factor, configFile){
                                  filter = filter_val,
                                  r = r_val,
                                  random.seed = random.seed_val)
-
+  
   return(value_noiseqbio)
 
 }
@@ -60,8 +60,8 @@ calculateDEGenes <- function(data,configFile){
   
   q_val <- configFile$degenesParam$q
   M_val <- configFile$degenesParam$m
-
-  data_degenes = degenes(data, q = q_val, M = M_val)
+  
+  data_degenes <- degenes(data, q = q_val, M = M_val)
 
   return(data_degenes)
 }

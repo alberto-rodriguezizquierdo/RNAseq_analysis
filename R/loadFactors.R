@@ -19,7 +19,7 @@ readFactor <- function(configFile){
 
 
 #' @name loadFactors
-#' @param dataCounts
+#' @param factorFile
 #' @param configFile
 #' @import NOISeq
 #'
