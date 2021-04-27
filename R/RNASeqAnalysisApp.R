@@ -46,7 +46,7 @@ RNASeqAnalysisApp <- function(root){
   for (factors in names(bFactors)){
 
     if (isTRUE(configFile$analysis$noiseq)){
-
+      
       ##---------------------Loading data from Factors------------------------##
 
       eval(parse(text=paste0('myCounts', factors,'noiseq <- creatingCountsByFactorsNoiseq(dataCounts,myFactors',factors,')')))

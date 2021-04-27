@@ -38,7 +38,9 @@ coincidences <- function(dataNoiseq, dataDeseq, dataCounts, configFile){
   
   geneList$refseq <- listGenes_all$Refseq_name
   
-  rawdataCoincidences$gene_id <-  gsub ('(?<=)[[:punct:]][a-z][0-9][0-9]', '', rawdataCoincidences$gene_id, perl = TRUE)
+  rawdataCoincidences$gene_id_v3 <- rawdataCoincidences$gene_id
+  
+  rawdataCoincidences$gene_id <- gsub ('(?<=)[[:punct:]][a-z][0-9][0-9]', '', rawdataCoincidences$gene_id, perl = TRUE)
   
   geneListCoincidence <- merge(geneList, rawdataCoincidences, by= 'gene_id')
   
