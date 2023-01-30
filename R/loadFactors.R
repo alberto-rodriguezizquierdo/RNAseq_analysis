@@ -29,7 +29,7 @@ readFactor <- function(configFile){
 
 loadFactors <- function(factorFile,configFile){
 
-
+  
   for (x in configFile$name_samples_1){
 
     if (exists('myfactor1')==FALSE){

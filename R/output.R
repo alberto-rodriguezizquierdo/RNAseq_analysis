@@ -249,11 +249,17 @@ outputCoincidences <- function(myResults, outputPathName,configFile){
   }else{
     
     unlink(dirOutput, recursive = TRUE)
-    
     dir.create(dirOutput)
     
   }
   
-  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences), sep=';', row.names = FALSE)
+  if(nrow(myResults) > 1){
   
+    gene_id <- myResults$gene_id
+    names(gene_id) <- 'GID'
+    write.table(gene_id, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences, '_list_genes.txt'), sep='\t', row.names=FALSE)
+  }
+  
+
+  write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences), sep=';', row.names = FALSE)
 }

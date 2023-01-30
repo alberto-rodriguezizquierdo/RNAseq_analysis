@@ -6,7 +6,7 @@
 
 RNASeqAnalysisApp <- function(root){
 
-
+  
 #  library(logging)
 
 #  logging::loginfo('####--------Starting app---------------####',logger = logs)
@@ -48,26 +48,12 @@ RNASeqAnalysisApp <- function(root){
     if (isTRUE(configFile$analysis$noiseq)){
       
       ##---------------------Loading data from Factors------------------------##
-
+      
       eval(parse(text=paste0('myCounts', factors,'noiseq <- creatingCountsByFactorsNoiseq(dataCounts,myFactors',factors,')')))
-
       eval(parse(text=paste0('myData',factors,' <- ReadNOISeqFactors(myCounts',factors,'noiseq,geneLength,myFactors',factors,')')))
-
       eval(parse(text=paste0('myData',factors,'_2 <- ReadNOISeqFactorsPCA(myCounts',factors,'noiseq,geneLength,myFactors',factors,')')))
 
       ##--------------Define variables to put into the analysis---------------##
-
-#      eval(parse(text=paste0('mySpecimen1 <- configFile$',factors,'$specimen1')))
-
-#      eval(parse(text=paste0('mySpecimen2 <- configFile$',factors,'$specimen2')))
-
-#      eval(parse(text=paste0('myComparison <- configFile$',factors,'$comparison')))
-
-      ##--------------Processing data and calculating DEGenes-----------------##
-
-#      eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,' <- ProcessingNOISeqbio(myData',factors,',factors,myFactors',factors,',configFile)')))
-
-#      eval(parse(text=paste0(mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,'.deg <- calculateDEGenes(',mySpecimen1,'_vs_', mySpecimen2,'_', myComparison,',configFile)')))
 
       ##----------------------------Output Results----------------------------##
       
@@ -98,7 +84,7 @@ RNASeqAnalysisApp <- function(root){
           
         eval(parse(text=paste0('deseqResults',factors,' <- processingDeseq(myData',factors,', configFile, factorsToDeseq)')))
           
-        outputPathName <- eval(parse(text=paste0('outputPathNameBuild(myFactors',factors,',usedFactor)')))
+        outputPathName <- eval(parse(text=paste0('outputPathNameBuild(myFactors',factors,',factors)')))
           
         eval(parse(text=paste0('outputResultsDESeq(deseqResults',factors,',outputPathName,configFile, factors, myData',factors,')')))
           

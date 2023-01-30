@@ -9,7 +9,7 @@
 #' @author Alberto Rodriguez-Izquierdo, 2021
 
 getConfigFile <- function(root){
-
+  
   #loginfo('Reading configFile...')
   configFile <- readConfigFile(root)
 
@@ -51,7 +51,7 @@ getConfigFile <- function(root){
   bFactors <- configFile[grepl("bFactor",names(configFile))]
 
   for (factors in names(bFactors)){
-
+    
     validateNameSamples1  <- eval(parse(text=paste0('validateCharacter(configFile$', factors,'$name_samples_1)')))
 
     eval(parse(text=paste0('configFile$', factors,'$name_samples_1 <- validateNameSamples1')))
@@ -320,7 +320,7 @@ nodesValidation <- function(configFile){
       eval(parse(text=paste0('configFile$',factors,'$factorDESeq <- ', factor$factorDESeq)))
       
     }
-
+    
     ##----------------------------Splitting by ','-------------------------##
     eval(parse(text=paste0('configFile$',factors,'$name_samples_1 <- ',factor$name_samples_1)))
 
@@ -399,16 +399,17 @@ validateConfigNodes <- function (nodes, configFile){
 
 
 validateCharacter <- function(configFile){
-
+  
   if (!is.null(configFile)){
-
-    if(configFile == "TRUE"){
-
-      configFile <- TRUE
-
-    }else if(configFile == "FALSE"){
-
-      configFile <- FALSE
+    if (length(configFile) == 1){
+      if(configFile == "TRUE"){
+        
+        configFile <- TRUE
+        
+      }else if(configFile == "FALSE"){
+        
+        configFile <- FALSE
+      }
     }
   }
 

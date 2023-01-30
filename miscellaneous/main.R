@@ -17,7 +17,7 @@ for (packages in libInstalling){
 
 
 #Setting Working directories
-root                  <- "C:/Users/David/Documents/RNAseq_analysis/"
+root                  <- "C:/Users/178/Documents/RNAseq_analysis/"
 setwd(root)
 rDirectory            <- 'R/'
 myDirectoryR          <- paste0(root,rDirectory)

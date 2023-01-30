@@ -24,25 +24,12 @@ coincidences <- function(dataNoiseq, dataDeseq, dataCounts, configFile){
   
   rawdataCoincidences <- merge(coincidencesDataAnalysis, dataCounts, by = "gene_id")
   
-  listGenes_all <- read.csv(configFile$coincidences$coincidencesFileName, sep=";", header=TRUE)
+  filtered_rawdataCoincidences <- rawdataCoincidences[rawdataCoincidences$prob > 0.95 &
+                                                        (rawdataCoincidences$log2FC < -2 | rawdataCoincidences$log2FC > 2) &
+                                                        (rawdataCoincidences$log2FoldChange < -2 | rawdataCoincidences$log2FoldChange > 2) &
+                                                        rawdataCoincidences$padj < 0.05 &
+                                                        !is.na(rawdataCoincidences$padj),]
   
-  geneList <- listGenes_all$Final_v3_name_tentative_creation_of_new_genes
   
-  geneList <- data.frame(geneList)
-  
-  geneList$gene_id <- geneList$geneList
-  
-  geneList$geneList <- NULL
-  
-  geneList$v1 <- listGenes_all$v1_name
-  
-  geneList$refseq <- listGenes_all$Refseq_name
-  
-  rawdataCoincidences$gene_id_v3 <- rawdataCoincidences$gene_id
-  
-  rawdataCoincidences$gene_id <- gsub ('(?<=)[[:punct:]][a-z][0-9][0-9]', '', rawdataCoincidences$gene_id, perl = TRUE)
-  
-  geneListCoincidence <- merge(geneList, rawdataCoincidences, by= 'gene_id')
-  
-  return(geneListCoincidence)
+  return(rawdataCoincidences)
 }
