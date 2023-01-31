@@ -218,7 +218,7 @@ outputPathNameBuild <- function(myFactors,factors){
     
   }
   
-  outputPathName <- paste0(outputSpecimen,'_',outputfactor,'_',outputdays,'_',outputtreatment,'_',outputorgan,'_',outputtypeTreatment,'_', factors)
+  outputPathName <- paste0(factors, outputSpecimen,'_',outputfactor,'_',outputdays,'_',outputtreatment,'_',outputorgan,'_',outputtypeTreatment,'_')
   
   return(outputPathName)
   
@@ -254,12 +254,11 @@ outputCoincidences <- function(myResults, outputPathName,configFile){
   }
   
   if(nrow(myResults) > 1){
-  
-    gene_id <- myResults$gene_id
+    
+    gene_id <- data.frame(myResults$gene_id)
     names(gene_id) <- 'GID'
     write.table(gene_id, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences, '_list_genes.txt'), sep='\t', row.names=FALSE)
   }
-  
 
   write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences), sep=';', row.names = FALSE)
 }
