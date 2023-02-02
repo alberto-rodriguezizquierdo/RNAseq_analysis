@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generalParameters>
+  <dataPath>C:/Users/David/Pictures/results_featureCounts/</dataPath>
+  <samplesFactorFilename>C:/Users/David/Pictures/sampleFactors/sampleFactors.csv</samplesFactorFilename>
+
+  <analysis>
+    <noiseq>TRUE</noiseq>
+    <deseq>TRUE</deseq>
+  </analysis>
+
+  <bFactor_1>
+    <name_samples_1>SVP_G_C_C1_H1,SVP_G_C_C1_H2,SVP_G_C_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_C_MD_H1,SVP_G_C_MD_H2,SVP_G_C_MD_H3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_1>
+
+  <bFactor_2>
+    <name_samples_1>SVP_G_C_C1_H1,SVP_G_C_C1_H2,SVP_G_C_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_C_HG_H1,SVP_G_C_HG_H2,SVP_G_C_HG_H3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_2>
+
+  <bFactor_3>
+    <name_samples_1>SVP_G_C_C1_H1,SVP_G_C_C1_H2,SVP_G_C_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_C_EX_H1,SVP_G_C_EX_H2,SVP_G_C_EX_H3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_3>
+
+  <bFactor_4>
+    <name_samples_1>SVP_G_C_C1_H1,SVP_G_C_C1_H2,SVP_G_C_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_C_C2_H1,SVP_G_C_C2_H2,SVP_G_C_C2_H3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_4>
+
+  <bFactor_5>
+    <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_M_C3_H1,SVP_G_M_C3_H2,SVP_G_M_C3_H3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_5>
+
+  <bFactor_6>
+    <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_M_MD_H1,SVP_G_M_MD_H2,SVP_G_M_MD_H3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_6>
+
+  <bFactor_7>
+    <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_M_HG_H1,SVP_G_M_HG_H2,SVP_G_M_HG_H3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_7>
+
+  <bFactor_8>
+    <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_M_EX_H1,SVP_G_M_EX_H2,SVP_G_M_EX_H3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_8>
+
+  <bFactor_9>
+    <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_M_C2_H1,SVP_G_M_C2_H2,SVP_G_M_C2_H3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_9>
+
+  <bFactor_10>
+    <name_samples_1>SVP_G_M_C1_H1,SVP_G_M_C1_H2,SVP_G_M_C1_H3</name_samples_1>
+    <name_samples_2>SVP_G_M_C3_H1,SVP_G_M_C3_H2,SVP_G_M_C3_H3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_10>
+
+
+  <bFactor_11>
+    <name_samples_1>SVP_G_C_C1_R1,SVP_G_C_C1_R2,SVP_G_C_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_C_MD_R1,SVP_G_C_MD_R2,SVP_G_C_MD_R3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_11>
+
+  <bFactor_12>
+    <name_samples_1>SVP_G_C_C1_R1,SVP_G_C_C1_R2,SVP_G_C_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_C_HG_R1,SVP_G_C_HG_R2,SVP_G_C_HG_R3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_12>
+
+  <bFactor_13>
+    <name_samples_1>SVP_G_C_C1_R1,SVP_G_C_C1_R2,SVP_G_C_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_C_EX_R1,SVP_G_C_EX_R2,SVP_G_C_EX_R3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_13>
+
+  <bFactor_14>
+    <name_samples_1>SVP_G_C_C1_R1,SVP_G_C_C1_R2,SVP_G_C_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_C_C2_R1,SVP_G_C_C2_R2,SVP_G_C_C2_R3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_14>
+
+  <bFactor_15>
+    <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_M_C3_R1,SVP_G_M_C3_R2,SVP_G_M_C3_R3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_15>
+
+  <bFactor_16>
+    <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_M_MD_R1,SVP_G_M_MD_R2,SVP_G_M_MD_R3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_16>
+
+  <bFactor_17>
+    <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_M_HG_R1,SVP_G_M_HG_R2,SVP_G_M_HG_R3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_17>
+
+  <bFactor_18>
+    <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_M_EX_R1,SVP_G_M_EX_R2,SVP_G_M_EX_R3</name_samples_2>
+    <factorNOISeq>factor</factorNOISeq>
+    <factorDESeq>factor</factorDESeq>
+  </bFactor_18>
+
+  <bFactor_19>
+    <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_M_C2_R1,SVP_G_M_C2_R2,SVP_G_M_C2_R3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_19>
+
+  <bFactor_20>
+    <name_samples_1>SVP_G_M_C1_R1,SVP_G_M_C1_R2,SVP_G_M_C1_R3</name_samples_1>
+    <name_samples_2>SVP_G_M_C3_R1,SVP_G_M_C3_R2,SVP_G_M_C3_R3</name_samples_2>
+    <factorNOISeq>time</factorNOISeq>
+    <factorDESeq>time</factorDESeq>
+  </bFactor_20>
+
+
+  <geneLength>
+    <geneLengthDir>C:/Users/David/Pictures/geneLength/</geneLengthDir>
+    <geneLengthFilename>geneLength.csv</geneLengthFilename>
+    <geneLengthAnnotation>Vitis_vinifera_gene_annotation_on_V2_20_new.gtf</geneLengthAnnotation>
+    <geneLengthExtAnnot>gtf</geneLengthExtAnnot>
+    <geneLengthOutputFilename>geneLength.csv</geneLengthOutputFilename>
+  </geneLength>
+
+  <condAnalysisNOISeqbio>
+    <nclust>15</nclust>
+    <k></k>
+    <norm>tmm</norm>
+    <filter>1</filter>
+    <r>50</r>
+    <random.seed>12345</random.seed>
+  </condAnalysisNOISeqbio>
+
+  <degenesParam>
+    <q>0.95</q>
+    <m></m>
+  </degenesParam>
+  
+  <deseqProperties>
+    <poisson>TRUE</poisson>
+    
+  </deseqProperties>
+
+
+  <output>
+    <graph>TRUE</graph>
+    <graphType>
+      <expr>TRUE</expr>
+      <MD>TRUE</MD>
+      <biotypes></biotypes>
+      <PCA>TRUE</PCA>
+      <q>0.9</q>
+    </graphType>
+    <outputDirNOISeq>C:/Users/David/Pictures/resultsNOISeq/</outputDirNOISeq>
+    <outputDirDESeq>C:/Users/David/Pictures/resultsDESeq/</outputDirDESeq>
+    <outputNameNOISeq>resultsnoiseq.csv</outputNameNOISeq>
+    <outputNameDESeq>resultsdeseq2.csv</outputNameDESeq>
+  </output>
+</generalParameters>
