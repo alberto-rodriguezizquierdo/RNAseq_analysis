@@ -258,6 +258,11 @@ outputCoincidences <- function(myResults, outputPathName,configFile){
     gene_id <- data.frame(myResults$gene_id)
     names(gene_id) <- 'GID'
     write.table(gene_id, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences, '_list_genes.txt'), sep='\t', row.names=FALSE)
+    gene_id_upregulated <- myResults[myResults$log2FC > 0,]
+    gene_id_downregulated <- myResults[myResults$log2FC < 0,]
+    write.table(gene_id_upregulated, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences, '_list_genes_upRegulated.txt'), sep='\t', row.names=FALSE)
+    write.table(gene_id_downregulated, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences, '_list_genes_upRegulated.txt'), sep='\t', row.names=FALSE)
+    
   }
 
   write.table(myResults, file=paste0(dirOutput,'/', configFile$output$outputNameCoincidences), sep=';', row.names = FALSE)

@@ -31,5 +31,5 @@ coincidences <- function(dataNoiseq, dataDeseq, dataCounts, configFile){
                                                         !is.na(rawdataCoincidences$padj),]
   
   
-  return(rawdataCoincidences)
+  return(filtered_rawdataCoincidences)
 }
